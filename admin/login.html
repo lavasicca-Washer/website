@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Connexion La Laverie Lens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #1a1a1a;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #000;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .error {
+            color: #e63946;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <h1>Administration</h1>
+        <p class="error" id="error-msg">Identifiants incorrects.</p>
+        <form id="login-form">
+            <input type="text" id="login" placeholder="Identifiant" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const errorMsg = document.getElementById('error-msg');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const login = document.getElementById('login').value;
+            const pass = document.getElementById('password').value;
+
+            // Hardcoded credentials as requested by user
+            if (login === '1LAV998' && pass === 'Lavasicca2025!') {
+                sessionStorage.setItem('laverie_auth', 'true');
+                window.location.href = '/admin/';
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+
+        // Auto-redirect if already logged in
+        if (sessionStorage.getItem('laverie_auth')) {
+            window.location.href = '/admin/';
+        }
+    </script>
+</body>
+
+</html>
