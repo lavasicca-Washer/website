@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Lien vers ton plan du site corrigé avec les WWW
+Sitemap: https://www.lalaverielens.fr/sitemap.xml
