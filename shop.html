@@ -246,8 +246,7 @@
             display: flex;
             flex-direction: column;
             gap: 22px;
-            overflow-y: auto;
-            max-height: calc(100vh - 110px);
+
         }
 
         @media(max-width: 768px) {
@@ -708,8 +707,50 @@
             border: 1px solid #eee;
             font-size: .88rem;
         }
+
+        .address-wrapper {
+            position: relative;
+        }
+
+        .suggestions-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            list-style: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .suggestions-list li {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #333;
+            transition: background 0.2s;
+        }
+
+        .suggestions-list li:last-child {
+            border-bottom: none;
+        }
+
+        .suggestions-list li:hover {
+            background: #f0fdf4;
+            color: #2d6a4f;
+            font-weight: 500;
+        }
     </style>
-  <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
+    <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
 </head>
 
 <body>
@@ -746,14 +787,21 @@
             <!-- LEFT: Visual -->
             <div class="shop-left">
                 <div class="shop-left-inner">
-                    <img id="mainImage" src="/images/prod-1771675751138-Nettoyage Chaussures Lens Lille.png" alt="Kit Rénovateur Sneakers Pro">
+
+                    <img id="mainImage" src="/images/kit-vue1.jpg" alt="Kit Rénovateur Sneakers Pro - Vue principale">
+
                     <div id="thumbsContainer">
-                        <img src="/images/prod-1771675751138-Nettoyage Chaussures Lens Lille.png" class="thumb active"
-                            onclick="document.getElementById('mainImage').src='/images/prod-1771675751138-Nettoyage Chaussures Lens Lille.png'; document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">
-                        <img src="/images/prod-1771675751162-Nettoyage Sneakers Lens Lille.png" class="thumb "
-                            onclick="document.getElementById('mainImage').src='/images/prod-1771675751162-Nettoyage Sneakers Lens Lille.png'; document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">
-                        <img src="/images/prod-1771675751173-Nettoyage Basket Lens.png" class="thumb "
-                            onclick="document.getElementById('mainImage').src='/images/prod-1771675751173-Nettoyage Basket Lens.png'; document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">
+                        <img src="/images/kit-vue1.jpg" class="thumb active"
+                            onclick="document.getElementById('mainImage').src='/images/kit-vue1.jpg'; document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');"
+                            alt="Vue 1">
+
+                        <img src="/images/kit-vue2.jpg" class="thumb"
+                            onclick="document.getElementById('mainImage').src='/images/kit-vue2.jpg'; document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');"
+                            alt="Vue 2">
+
+                        <img src="/images/kit-vue3.jpg" class="thumb"
+                            onclick="document.getElementById('mainImage').src='/images/kit-vue3.jpg'; document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');"
+                            alt="Vue 3">
                     </div>
                 </div>
             </div>
@@ -768,12 +816,14 @@
                     <div class="product-meta" style="margin-top:8px;">
                         <span class="stars-inline">★★★★★</span>
                         <span class="reviews-count" id="productRatingText">4.9 · 664 avis</span>
-                        <span class="review-quote" id="productRatingQuote">«Excellent produit, très facile à appliquer ... Un bon kit de nettoyage. » — J***r</span>
+                        <span class="review-quote" id="productRatingQuote">«Excellent produit, très facile à appliquer
+                            ... Un bon kit de nettoyage. » — J***r</span>
                     </div>
                 </div>
 
                 <p id="productSubtitle" style="font-size:.96rem;color:#444;line-height:1.65;">
-                    L'arme secrète des experts en nettoyage de chaussures, maintenant chez vous. Efficace sur cuir, toile, nubuck et semelles — résultats visibles dès la première utilisation !
+                    L'arme secrète des experts en nettoyage de chaussures, maintenant chez vous. Efficace sur cuir,
+                    toile, nubuck et semelles — résultats visibles dès la première utilisation !
                 </p>
 
                 <div class="price-block">
@@ -785,19 +835,23 @@
                 <div class="product-features" id="productFeatures">
                     <div class="pf">
                         <span class="pi">🧴</span>
-                        <div class="pt"><strong>Spray Nettoyant Expert 150ml</strong><span>Formule professionnelle sans rinçage — élimine les taches tenaces</span></div>
+                        <div class="pt"><strong>Spray Nettoyant Expert 150ml</strong><span>Formule professionnelle sans
+                                rinçage — élimine les taches tenaces</span></div>
                     </div>
                     <div class="pf">
                         <span class="pi">🪥</span>
-                        <div class="pt"><strong>Brosse Premium Poils Souples</strong><span>Respecte tous les matériaux, y compris cuir verni et daim</span></div>
+                        <div class="pt"><strong>Brosse Premium Poils Souples</strong><span>Respecte tous les matériaux,
+                                y compris cuir verni et daim</span></div>
                     </div>
                     <div class="pf">
                         <span class="pi">🪥</span>
-                        <div class="pt"><strong>Brosse Premium Poils Durs</strong><span>Nettoye parfaitement les semelles, lacets et surfaces dures.</span></div>
+                        <div class="pt"><strong>Brosse Premium Poils Durs</strong><span>Nettoye parfaitement les
+                                semelles, lacets et surfaces dures.</span></div>
                     </div>
                     <div class="pf">
                         <span class="pi">🧤</span>
-                        <div class="pt"><strong>Chiffon Microfibre Haute Densité</strong><span>Finition impeccable sans rayures ni résidus</span></div>
+                        <div class="pt"><strong>Chiffon Microfibre Haute Densité</strong><span>Finition impeccable sans
+                                rayures ni résidus</span></div>
                     </div>
                 </div>
 
@@ -881,11 +935,14 @@
                             <input type="email" id="input-email" class="form-input" required
                                 placeholder="jean.dupont@email.com">
                         </div>
-                        <div class="form-group">
-                            <label>Adresse complète</label>
-                            <textarea id="address-input" class="form-input" rows="3" required
-                                placeholder="12 Rue de la Paix, 62300 Lens"></textarea>
+                        <div class="form-group address-wrapper"> <label>Adresse complète</label> <input type="text"
+                                id="address-input" class="form-input" required autocomplete="off"
+                                placeholder="Commencez à taper votre adresse...">
+                            <ul id="address-suggestions" class="suggestions-list"
+                                style="position:absolute; top:100%; left:0; width:100%; background:#fff; border:1px solid #ddd; border-radius:0 0 8px 8px; z-index:1000; list-style:none; padding:0; display:none; max-height:200px; overflow-y:auto;">
+                            </ul>
                         </div>
+
 
                         <h3 style="margin:24px 0 14px;">Paiement</h3>
                         <div class="payment-option">
@@ -931,7 +988,7 @@
         </div>
 
         <script type="application/json" id="product-data">
-            {"id":1,"name":"Kit Rénovateur Sneakers Pro","price":18.9,"images":["/images/prod-1771675751138-Nettoyage Chaussures Lens Lille.png","/images/prod-1771675751162-Nettoyage Sneakers Lens Lille.png","/images/prod-1771675751173-Nettoyage Basket Lens.png"],"description":"Une formule unique développée pour nettoyer en profondeur sans abîmer les matériaux (cuir, toile, nubuck).","subtitle":"L'arme secrète des experts en nettoyage de chaussures, maintenant chez vous. Efficace sur cuir, toile, nubuck et semelles — résultats visibles dès la première utilisation !","rating_text":"4.9 · 664 avis","rating_quote":"«Excellent produit, très facile à appliquer ... Un bon kit de nettoyage. » — J***r","features":[{"icon":"🧴","title":"Spray Nettoyant Expert 150ml","subtitle":"Formule professionnelle sans rinçage — élimine les taches tenaces"},{"icon":"🪥","title":"Brosse Premium Poils Souples","subtitle":"Respecte tous les matériaux, y compris cuir verni et daim"},{"icon":"🪥","title":"Brosse Premium Poils Durs","subtitle":"Nettoye parfaitement les semelles, lacets et surfaces dures."},{"icon":"🧤","title":"Chiffon Microfibre Haute Densité","subtitle":"Finition impeccable sans rayures ni résidus"}]}
+            {"id":1,"name":"Kit Rénovateur Sneakers Pro","price":18.9,"images":["/images/kit-vue1.jpg", "/images/kit-vue2.jpg", "/images/kit-vue3.jpg"],"description":"Une formule unique développée pour nettoyer en profondeur sans abîmer les matériaux (cuir, toile, nubuck).","subtitle":"L'arme secrète des experts en nettoyage de chaussures, maintenant chez vous. Efficace sur cuir, toile, nubuck et semelles — résultats visibles dès la première utilisation !","rating_text":"4.9 · 664 avis","rating_quote":"«Excellent produit, très facile à appliquer ... Un bon kit de nettoyage. » — J***r","features":[{"icon":"🧴","title":"Spray Nettoyant Expert 150ml","subtitle":"Formule professionnelle sans rinçage — élimine les taches tenaces"},{"icon":"🪥","title":"Brosse Premium Poils Souples","subtitle":"Respecte tous les matériaux, y compris cuir verni et daim"},{"icon":"🪥","title":"Brosse Premium Poils Durs","subtitle":"Nettoye parfaitement les semelles, lacets et surfaces dures."},{"icon":"🧤","title":"Chiffon Microfibre Haute Densité","subtitle":"Finition impeccable sans rayures ni résidus"}]}
         </script>
         <script>
             let products = [];
@@ -1108,104 +1165,38 @@
 
             async function handleOrder(e) {
                 e.preventDefault();
-                const orderData = {
-                    date: new Date().toISOString(),
-                    status: 'En attente de paiement',
-                    customer: {
-                        lastname: document.getElementById('input-lastname').value,
-                        firstname: document.getElementById('input-firstname').value,
-                        phone: document.getElementById('input-phone').value,
-                        email: document.getElementById('input-email').value,
-                        address: document.getElementById('address-input').value
-                    },
-                    items: cart,
-                    total: els.totalDisplay.textContent
-                };
+
+                els.btnMainAction.textContent = 'Redirection vers le paiement...';
+                els.btnMainAction.disabled = true;
+
                 try {
-                    els.btnMainAction.textContent = 'Préparation du paiement...';
-                    els.btnMainAction.disabled = true;
-
-                    // 1. Create order in our system
-                    const response = await fetch('/api/orders', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(orderData)
-                    });
-
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        console.error('Save order failed:', errorText);
-                        try {
-                            const errorData = JSON.parse(errorText);
-                            throw new Error(errorData.error || 'Failed to save order');
-                        } catch (e) {
-                            throw new Error('Erreur serveur (Route API introuvable ou erreur fatale)');
-                        }
-                    }
-                    const result = await response.json();
-                    const orderId = result.orderId;
-
-                    // 2. Create Stripe Session
-                    const stripeRes = await fetch('/api/create-checkout-session', {
+                    const response = await fetch('/api/create-checkout-session', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
-                            orderId: orderId,
                             items: cart,
-                            customerEmail: orderData.customer.email
+                            customerEmail: document.getElementById('input-email').value
                         })
                     });
 
-                    if (!stripeRes.ok) {
-                        const errorText = await stripeRes.text();
-                        console.error('Stripe session failed:', errorText);
-                        try {
-                            const errorData = JSON.parse(errorText);
-                            throw new Error(errorData.error || 'Stripe session failed');
-                        } catch (e) {
-                            throw new Error('Erreur Stripe (Impossible de créer la session de paiement)');
-                        }
-                    }
-                    const stripeSession = await stripeRes.json();
+                    const data = await response.json();
 
-                    // 3. Redirect to Stripe
-                    window.location.href = stripeSession.url;
+                    if (!response.ok) {
+                        throw new Error(data.error || 'Erreur paiement');
+                    }
+
+                    window.location.href = data.url;
 
                 } catch (err) {
                     console.error(err);
-                    alert('Erreur: ' + err.message);
+                    alert('Erreur : ' + err.message);
                     els.btnMainAction.textContent = 'Valider la commande';
                     els.btnMainAction.disabled = false;
                 }
             }
-
-            async function checkStripeStatus() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const success = urlParams.get('success');
-                const canceled = urlParams.get('canceled');
-                const orderId = urlParams.get('order_id');
-
-                if (success && orderId) {
-                    document.getElementById('customerNameDisplay').textContent = "Client";
-                    document.getElementById('orderIdDisplay').textContent = orderId;
-                    openCart();
-                    switchView('view-success');
-                    cart = [];
-                    localStorage.removeItem('laverie_cart');
-                    updateCartUI();
-                } else if (canceled) {
-                    openCart();
-                    switchView('view-checkout');
-                    alert('Paiement annulé. Vous pouvez réessayer.');
-                }
-            }
-
-            function resetCart() {
-                closeCart();
-                setTimeout(() => switchView('view-cart'), 500);
-            }
         </script>
 
+        A
     </main>
 
     <footer class="footer-soft" style="background: #f8f9fa; padding: 60px 0 30px; border-top: 1px solid #eee;">
