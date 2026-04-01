@@ -15,11 +15,12 @@
     <!-- Dynamic Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-
-
-    <script>document.documentElement.style.setProperty('--font-main-family', "'&quot;Aptos&quot;, sans-serif', sans-serif");</script>
+    <script>
+        document.documentElement.style.setProperty('--font-main-family', "'Instrument Sans', sans-serif");
+    </script>
 
     <style>
         :root {
@@ -46,6 +47,191 @@
         .badge-rec {
             background: var(--accent-green);
         }
+
+        /* ========================================= */
+        /* BARRE DE NAVIGATION MOBILE (BOTTOM BAR)   */
+        /* ========================================= */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 9999;
+            border-radius: 20px 20px 0 0;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .mobile-nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70px;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex: 1;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav-item:active {
+            color: var(--accent-green);
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav-item.shop-btn {
+            color: #1a1a1a;
+        }
+
+        .mobile-nav-item.shop-btn .mobile-nav-icon {
+            background: #ffeb3b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 8px rgba(255, 235, 59, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+
+        /* ^^^ FIN DU CODE CSS ICI ^^^ */
+
+        /* ========================================= */
+        /* POP-UP NOTIFICATION PRO (BUREAU & MOBILE) */
+        /* ========================================= */
+
+        .b2b-floating-popup {
+            position: fixed;
+            /* Position par défaut sur Ordinateur : En bas à droite */
+            bottom: 30px;
+            right: 30px;
+            width: 340px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            z-index: 10000;
+            display: none;
+            /* Masqué au chargement, affiché par le script */
+            animation: slideUpFade 0.6s ease-out forwards;
+        }
+
+        .b2b-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #999;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .b2b-close-btn:hover {
+            color: #1a1a1a;
+        }
+
+        .b2b-popup-content {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .b2b-icon {
+            background: rgba(45, 106, 79, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green, #2d6a4f);
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .b2b-text h4 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .b2b-text p {
+            margin: 0 0 12px 0;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .b2b-cta {
+            display: inline-flex;
+            align-items: center;
+            background: #ffeb3b;
+            color: #1a1a1a;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .b2b-cta:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Adaptation pour Mobile (Écrans < 768px) */
+        @media (max-width: 768px) {
+            .b2b-floating-popup {
+                width: auto;
+                /* S'adapte à la largeur */
+                left: 15px;
+                right: 15px;
+                /* Se place juste au dessus de la barre de navigation (70px + 20px de marge) */
+                bottom: 90px;
+                padding: 15px;
+            }
+        }
     </style>
 
     <!-- LocalBusiness Schema (Optimized) -->
@@ -54,10 +240,10 @@
       "@context": "https://schema.org",
       "@type": "DryCleaningOrLaundry",
       "name": "La Laverie Lens",
-      "image": "https://laverielens.fr/hero.png",
-      "url": "https://laverielens.fr",
+      "image": "https://www.lalaverielens.fr/images/laverie-automatique-lens-route-de-lille-libre-service-7j7.jpg",
+      "url": "https://www.lalaverielens.fr",
       "telephone": "+33659844989",
-      "priceRange": "5€ - 12€",
+      "priceRange": "1€ - 12€",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "310 Route de Lille",
@@ -138,15 +324,16 @@
             </a>
             <div class="header-actions">
                 <nav style="display: none; gap: 20px; margin-right: 20px; align-items: center;" class="seo-nav">
-                    <a href="/services.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Services</a>
-                    <a href="/lavage-couette-lens.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Lavage
+                    <a href="/services" style="color:white; font-size: 0.9rem; font-weight: 500;">Services</a>
+                    <a href="/lavage-couette-lens" style="color:white; font-size: 0.9rem; font-weight: 500;">Lavage
                         Couettes</a>
-                    <a href="/sechage-rapide-lens.html"
-                        style="color:white; font-size: 0.9rem; font-weight: 500;">Séchage
+                    <a href="/sechage-rapide-lens" style="color:white; font-size: 0.9rem; font-weight: 500;">Séchage
                         Rapide</a>
-                    <a href="/tarifs.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Tarifs</a>
-                    <a href="/blog.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Blog</a>
-                    <a href="/shop.html"
+                    <a href="/tarifs" style="color:white; font-size: 0.9rem; font-weight: 500;">Tarifs</a>
+                    <a href="/laverie-professionnels-lens"
+                        style="color:white; font-size: 0.9rem; font-weight: 700;">Espace Pro</a>
+                    <a href="/blog" style="color:white; font-size: 0.9rem; font-weight: 500;">Blog</a>
+                    <a href="/shop"
                         style="display:inline-flex; align-items:center; gap:5px; background:#ffeb3b; color:#1a1a1a; font-size: 0.85rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration:none; animation: shopPulse 2s infinite;"><span>🛒</span>
                         Shop</a>
                 </nav>
@@ -187,9 +374,11 @@
             <div class="container hero-split">
                 <div class="hero-text">
                     <h1 data-editable="hero.title"><strong><span style='color:#2d6a4f'>Laverie Lens</span><br>Propre.
-                            Rapide.<br>Libre Service.</strong><br><span
-                            style='display:inline-flex;align-items:center;gap:10px;background:rgba(45,106,79,0.12);border:1.5px solid rgba(45,106,79,0.35);color:#1a1a1a;padding:10px 22px;border-radius:50px;font-size:1.3rem;font-weight:600;margin-top:20px;'><span
-                                class='dot-live'></span>Ouvert 7/7 de 6h à 21h</span></h1>
+                            Rapide.<br>Libre Service.</strong></h1>
+                    <div
+                        style='display:inline-flex;align-items:center;gap:10px;background:rgba(45,106,79,0.12);border:1.5px solid rgba(45,106,79,0.35);color:#1a1a1a;padding:10px 22px;border-radius:50px;font-size:1.3rem;font-weight:600;margin-top:20px;'>
+                        <span class='dot-live'></span>Ouvert 7/7 de 6h à 21h
+                    </div>
                     <p data-editable="hero.subtitle">Bienvenue à La Laverie Lens, la meilleure laverie automatique à
                         Lens pour un lavage rapide et professionnel. Votre linge, traité avec soin. <br>Située au 310
                         route de Lille, notre laverie est idéale pour vos couettes et gros volumes.</p>
@@ -316,22 +505,100 @@
                         <h2>Nous contacter</h2>
                         <p>Une question sur nos machines ou services ?</p>
                         <div style="margin-top: 20px;">
-                            <form class="minimal-form" name="contact" method="POST" data-netlify="true">
-                                <input type="hidden" name="form-name" value="contact" />
-                                <div style="display:flex; gap:10px; margin-bottom: 10px;">
+                            <div id="msg-succes"
+                                style="display: none; background: #e6f4ea; border: 1px solid #2d6a4f; color: #1b4332; padding: 20px; border-radius: 8px; text-align: center; font-weight: 500; line-height: 1.5; margin-top: 10px;">
+                                ✅ Message envoyé.<br>Il sera traité sous 24h.<br><i>L'équipe La Laverie Lens</i>
+                            </div>
+
+                            <form id="contact-form" class="minimal-form"
+                                action="https://formsubmit.co/lavasicca@gmail.com" method="POST">
+
+                                <input type="hidden" name="_subject"
+                                    value="Nouveau message ou demande de facture - La Laverie Lens">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="text" name="_honey" style="display:none">
+                                <input type="hidden" name="_next" value="https://www.lalaverielens.fr/">
+
+                                <div style="display:flex; gap:10px; margin-bottom: 10px; width: 100%;">
                                     <input type="text" name="name" placeholder="Votre Nom *" class="input-line"
-                                        style="flex:1" required>
+                                        style="flex:1; min-width:0; box-sizing:border-box;" required>
                                     <input type="email" name="email" placeholder="Votre Email *" class="input-line"
-                                        style="flex:1" required>
+                                        style="flex:1; min-width:0; box-sizing:border-box;" required>
                                 </div>
                                 <input type="tel" name="phone" placeholder="Votre Téléphone *" class="input-line"
-                                    style="width: 100%; margin-bottom: 10px;" required>
-                                <textarea name="message" placeholder="Votre Message *" class="input-line" rows="3"
-                                    style="resize:none;" required></textarea>
+                                    style="width: 100%; margin-bottom: 15px; box-sizing:border-box;" required>
+
+                                <div style="margin-bottom: 15px; text-align: left;">
+                                    <label
+                                        style="cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #2d6a4f; display: inline-flex; align-items: center; gap: 8px;">
+                                        <input type="checkbox" id="check-facture" name="Demande_Facture" value="Oui"
+                                            style="width: 18px; height: 18px; accent-color: #2d6a4f;">
+                                        📄 Je souhaite recevoir une facture
+                                    </label>
+                                </div>
+
+                                <div id="bloc-facture"
+                                    style="display: none; background: #f1f8f4; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #d1e7dd; text-align: left;">
+                                    <p
+                                        style="font-size: 0.85rem; color: #1b4332; margin-bottom: 10px; font-weight: 600;">
+                                        Détails pour la facturation :</p>
+
+                                    <div style="display:flex; gap:10px; margin-bottom: 10px; width: 100%;">
+                                        <input type="text" id="fac-nom" name="Facture_Nom_Societe"
+                                            placeholder="Nom ou Société *" class="input-line"
+                                            style="flex:1; min-width:0; box-sizing:border-box; background: #fff;">
+                                        <input type="text" id="fac-prenom" name="Facture_Prenom" placeholder="Prénom *"
+                                            class="input-line"
+                                            style="flex:1; min-width:0; box-sizing:border-box; background: #fff;">
+                                    </div>
+
+                                    <input type="text" id="fac-adresse" name="Facture_Adresse"
+                                        placeholder="Adresse complète de facturation *" class="input-line"
+                                        style="width: 100%; margin-bottom: 10px; box-sizing:border-box; background: #fff;">
+
+                                    <div style="display:flex; gap:10px; margin-bottom: 5px; width: 100%;">
+                                        <input type="number" step="0.01" min="0" id="fac-montant" name="Facture_Montant"
+                                            placeholder="Montant (ex: 9.50) *" class="input-line"
+                                            style="flex:1; min-width:0; box-sizing:border-box; background: #fff;">
+                                        <input type="date" id="fac-date" name="Facture_Date" class="input-line"
+                                            style="flex:1; min-width:0; box-sizing:border-box; background: #fff; color: #666;"
+                                            title="Date du lavage">
+                                    </div>
+                                </div>
+
+                                <textarea name="message" placeholder="Votre Message ou précision *" class="input-line"
+                                    rows="3" style="resize:none; width:100%; box-sizing:border-box;"
+                                    required></textarea>
+
                                 <div style="text-align:right; margin-top:10px;">
                                     <button type="submit" class="btn-black-small">Envoyer</button>
                                 </div>
                             </form>
+
+                            <script>
+                                const checkFacture = document.getElementById('check-facture');
+                                const blocFacture = document.getElementById('bloc-facture');
+                                const facInputs = [
+                                    document.getElementById('fac-nom'),
+                                    document.getElementById('fac-prenom'),
+                                    document.getElementById('fac-adresse'),
+                                    document.getElementById('fac-montant'),
+                                    document.getElementById('fac-date')
+                                ];
+
+                                checkFacture.addEventListener('change', function () {
+                                    if (this.checked) {
+                                        blocFacture.style.display = 'block';
+                                        facInputs.forEach(input => input.required = true);
+                                    } else {
+                                        blocFacture.style.display = 'none';
+                                        facInputs.forEach(input => {
+                                            input.required = false;
+                                            input.value = '';
+                                        });
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="map-wrapper">
@@ -555,18 +822,20 @@
                     <div style="flex: 1; min-width: 200px;">
                         <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">Services</h4>
                         <ul style="list-style: none; padding: 0; color: #666; font-size: 0.9rem; line-height: 1.8;">
-                            <li><a href="/services.html">Machines 6kg à 20kg</a></li>
-                            <li><a href="/lavage-couette-lens.html">Lavage Couettes</a></li>
-                            <li><a href="/sechage-rapide-lens.html">Séchage Rapide</a></li>
-                            <li><a href="/tarifs.html">Nos Tarifs</a></li>
+                            <li><a href="/services">Machines 6kg à 20kg</a></li>
+                            <li><a href="/lavage-couette-lens">Lavage Couettes</a></li>
+                            <li><a href="/sechage-rapide-lens">Séchage Rapide</a></li>
+                            <li><a href="/laverie-professionnels-lens"
+                                    style="color:white; font-size: 0.9rem; font-weight: 700;">Espace Pro</a></hi>
+                            <li><a href="/tarifs">Nos Tarifs</a></li>
                         </ul>
                     </div>
                     <div style="flex: 1; min-width: 200px;">
                         <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">Infos Pratiques</h4>
                         <ul style="list-style: none; padding: 0; color: #666; font-size: 0.9rem; line-height: 1.8;">
-                            <li><a href="/faq.html">Questions Fréquentes</a></li>
-                            <li><a href="/contact.html">Plan d'accès</a></li>
-                            <li><a href="/blog.html">Conseils & Actualités</a></li>
+                            <li><a href="/faq">Questions Fréquentes</a></li>
+                            <li><a href="/contact">Plan d'accès</a></li>
+                            <li><a href="/blog">Conseils & Actualités</a></li>
                         </ul>
                     </div>
                 </div>
@@ -593,11 +862,59 @@
     </main>
 
     <!-- Simple Mobile FAB -->
-    <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank"
-        class="fab-soft">
-        📍
-    </a>
 
+
+    <nav class="mobile-bottom-nav"
+        style="background: #fff; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); border-radius: 20px 20px 0 0;">
+        <div class="mobile-nav-container"
+            style="display: flex; justify-content: space-around; align-items: center; height: 70px; position: relative;">
+
+            <a href="/" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span>Accueil</span></a>
+            <a href="/tarifs.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">💳</span><span>Tarifs</span></a>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank"
+                style="position: relative; top: -20px; background: #2d6a4f; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(45, 106, 79, 0.4); border: 4px solid #fff; text-decoration: none; z-index: 10;">
+                <span style="font-size: 1.8rem; line-height: 1;">🚀​</span>
+            </a>
+
+            <a href="/services.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">🧺</span><span>Services</span></a>
+            <a href="/shop.html" class="mobile-nav-item shop-btn"><span class="mobile-nav-icon">🛒</span></a>
+        </div>
+    </nav>
+
+    <div id="b2b-popup" class="b2b-floating-popup">
+        <button class="b2b-close-btn" onclick="closeB2BPopup()" aria-label="Fermer la notification">×</button>
+
+        <div class="b2b-popup-content">
+            <div class="b2b-icon">👔</div>
+            <div class="b2b-text">
+                <h4>Conciergeries & Pros</h4>
+                <p>Gagnez du temps : lavage de vos gros volumes et factures en ligne simplifiées 🧾.</p>
+                <a href="/laverie-professionnels-lens" class="b2b-cta">Découvrez l'Espace Pro 🚀</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Afficher le Pop-up après 3 secondes, sauf s'il a déjà été fermé
+        document.addEventListener('DOMContentLoaded', function () {
+            // Vérifie si le client a déjà cliqué sur la croix lors d'une précédente visite
+            if (!sessionStorage.getItem('b2bPopupClosed')) {
+                setTimeout(function () {
+                    document.getElementById('b2b-popup').style.display = 'block';
+                }, 3000); // 3000 millisecondes = 3 secondes
+            }
+        });
+
+        // Fonction pour fermer le Pop-up et mémoriser l'action
+        function closeB2BPopup() {
+            document.getElementById('b2b-popup').style.display = 'none';
+            // Enregistre l'information pour ne plus l'afficher tant que le navigateur n'est pas complètement fermé
+            sessionStorage.setItem('b2bPopupClosed', 'true');
+        }
+    </script>
 
 </body>
 

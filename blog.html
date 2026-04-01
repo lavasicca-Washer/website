@@ -15,34 +15,108 @@
     <script>document.documentElement.style.setProperty('--primary-color', '#2d6a4f');</script>
     <script>document.documentElement.style.setProperty('--secondary-color', '#f8f9fa');</script>
     <script>document.documentElement.style.setProperty('--font-size-base', '16px');</script>
-    
+
     <style>
         :root {
             --accent-green: var(--primary-color, #2d6a4f);
             --bg-secondary: var(--secondary-color, #f4f6f8);
         }
-    
+
         body {
             font-size: var(--font-size-base, 1rem);
         }
-    
+
         /* Update button colors to match primary color */
         .btn-live-soft .dot {
             background: var(--primary-color, #22c55e);
             box-shadow: 0 0 8px var(--primary-color, rgba(34, 197, 94, 0.4));
         }
-    
+
         .badge-rec {
             background: var(--primary-color, #2d6a4f);
         }
-    
+
         header {
             /* Optional: Allow header color override if needed, currently hardcoded #2d3e30 in CSS */
             background: var(--primary-color, #2d3e30);
         }
-    </style>  <script type="module" crossorigin src="/assets/modulepreload-polyfill-b5qt9emx.js"></script>
-  <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
+
+        /* ========================================= */
+        /* BARRE DE NAVIGATION MOBILE (BOTTOM BAR)   */
+        /* ========================================= */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 9999;
+            border-radius: 20px 20px 0 0;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .mobile-nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70px;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex: 1;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav-item:active {
+            color: var(--accent-green);
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav-item.shop-btn {
+            color: #1a1a1a;
+        }
+
+        .mobile-nav-item.shop-btn .mobile-nav-icon {
+            background: #ffeb3b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 8px rgba(255, 235, 59, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+
+        /* ^^^ FIN DU CODE CSS ICI ^^^ */
+    </style>
+    <script type="module" crossorigin src="/assets/modulepreload-polyfill-b5qt9emx.js"></script>
+    <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
 </head>
 
 <body>
@@ -55,24 +129,20 @@
             <div class="header-actions">
                 <!-- Top Navigation for SEO Internal Linking (Visible Desktop, Hidden Mobile if tight) -->
                 <nav style="display: none; gap: 20px; margin-right: 20px; align-items: center;" class="seo-nav">
-                    <a href="/services.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Services</a>
-                    <a href="/lavage-couette-lens.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Lavage
+                    <a href="/services" style="color:white; font-size: 0.9rem; font-weight: 500;">Services</a>
+                    <a href="/lavage-couette-lens" style="color:white; font-size: 0.9rem; font-weight: 500;">Lavage
                         Couettes</a>
-                    <a href="/sechage-rapide-lens.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Séchage
+                    <a href="/sechage-rapide-lens" style="color:white; font-size: 0.9rem; font-weight: 500;">Séchage
                         Rapide</a>
-                    <a href="/tarifs.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Tarifs</a>
-                    <a href="/blog.html" style="color:white; font-size: 0.9rem; font-weight: 500;">Blog</a>
-                    <a href="/shop.html"
+                    <a href="/tarifs" style="color:white; font-size: 0.9rem; font-weight: 500;">Tarifs</a>
+                    <a href="/blog" style="color:white; font-size: 0.9rem; font-weight: 500;">Blog</a>
+                    <a href="/shop"
                         style="display:inline-flex; align-items:center; gap:5px; background:#ffeb3b; color:#1a1a1a; font-size: 0.85rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration:none; animation: shopPulse 2s infinite;"><span>🛒</span>
                         Shop</a>
                 </nav>
-                <div class="cart-trigger"
-                    style="position: relative; cursor: pointer; margin-right: 15px; display: flex; align-items: center;">
-                    <span style="font-size: 1.5rem;">🛒</span>
-                    <span class="cart-count"
-                        style="position: absolute; top: -5px; right: -5px; background: #ffeb3b; color: black; font-size: 0.7rem; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: none; align-items: center; justify-content: center;">0</span>
-                </div>
-                <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank" class="btn-live-soft">
+
+                <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank"
+                    class="btn-live-soft">
                     Disponibilité <span class="dot"></span>
                 </a>
             </div>
@@ -83,14 +153,14 @@
                     display: flex !important;
                 }
             }
-    
+
             @keyframes shopPulse {
-    
+
                 0%,
                 100% {
                     box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.6);
                 }
-    
+
                 50% {
                     box-shadow: 0 0 0 6px rgba(255, 235, 59, 0);
                 }
@@ -104,58 +174,83 @@
                 <div style="display: grid; gap: 40px; margin-top: 40px;">
                     <article id="comment-laver-couette-lens"
                         style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);">
-                        <img src="/images/comment-laver-couette-king-size-lens.jpg" alt="Comment laver une couette king size à Lens : machine XXL 20kg libre-service"
+                        <img src="/images/comment-laver-couette-king-size-lens.jpg"
+                            alt="Comment laver une couette king size à Lens : machine XXL 20kg libre-service"
                             style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;"
                             data-editable="pages.blog.articles.0.image">
                         <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #2d3e30;"
                             data-editable="pages.blog.articles.0.title">Comment laver une couette à Lens ?</h2>
 
-                        <div style="color: #444; line-height: 1.6;"
-                            data-editable="pages.blog.articles.0.snippet"><p>Laver une couette en machine domestique est souvent impossible ou risqué pour le tambour. À La Laverie Lens, nos machines 20kg permettent à la couette de bouger librement, assurant un lavage en profondeur.</p><h3>Quelle température choisir ?</h3><p>Pour une couette synthétique, 40°C est idéal. Pour les plumes, privilégiez un cycle délicat. Le séchage est l'étape clé : utilisez nos séchoirs grands volumes pour redonner tout son gonflant à votre couette.</p></div>
+                        <div style="color: #444; line-height: 1.6;" data-editable="pages.blog.articles.0.snippet">
+                            <p>Laver une couette en machine domestique est souvent impossible ou risqué pour le tambour.
+                                À La Laverie Lens, nos machines 20kg permettent à la couette de bouger librement,
+                                assurant un lavage en profondeur.</p>
+                            <h3>Quelle température choisir ?</h3>
+                            <p>Pour une couette synthétique, 40°C est idéal. Pour les plumes, privilégiez un cycle
+                                délicat. Le séchage est l'étape clé : utilisez nos séchoirs grands volumes pour redonner
+                                tout son gonflant à votre couette.</p>
+                        </div>
                     </article>
                     <article id="laverie-etudiant-lens"
                         style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);">
-                        <img src="/images/laverie-pas-chere-etudiant-lens.jpg" alt="Laverie pas chère pour étudiants à Lens avec lessive professionnelle offerte"
+                        <img src="/images/laverie-pas-chere-etudiant-lens.jpg"
+                            alt="Laverie pas chère pour étudiants à Lens avec lessive professionnelle offerte"
                             style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;"
                             data-editable="pages.blog.articles.1.image">
                         <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #2d3e30;"
-                            data-editable="pages.blog.articles.1.title">Guide Étudiant : Laver son linge pas cher à Lens</h2>
+                            data-editable="pages.blog.articles.1.title">Guide Étudiant : Laver son linge pas cher à Lens
+                        </h2>
 
-                        <div style="color: #444; line-height: 1.6;"
-                            data-editable="pages.blog.articles.1.snippet"><p>Entre les cours et les sorties, la lessive est une corvée. Notre laverie est le bon plan étudiant : 5€ pour 6kg (soit 2 semaines de t-shirts !), lessive incluse. Révisez au calme pendant que la machine tourne.</p></div>
+                        <div style="color: #444; line-height: 1.6;" data-editable="pages.blog.articles.1.snippet">
+                            <p>Entre les cours et les sorties, la lessive est une corvée. Notre laverie est le bon plan
+                                étudiant : 5€ pour 6kg (soit 2 semaines de t-shirts !), lessive incluse. Révisez au
+                                calme pendant que la machine tourne.</p>
+                        </div>
                     </article>
                     <article id="laverie-ou-pressing"
                         style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);">
-                        <img src="/images/alternative-pressing-lens-libre-service.jpg" alt="Alternative pressing Lens : lavage et séchage rapide de vêtements en libre-service"
+                        <img src="/images/alternative-pressing-lens-libre-service.jpg"
+                            alt="Alternative pressing Lens : lavage et séchage rapide de vêtements en libre-service"
                             style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;"
                             data-editable="pages.blog.articles.2.image">
                         <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #2d3e30;"
                             data-editable="pages.blog.articles.2.title">Laverie ou Pressing : le match du prix</h2>
 
-                        <div style="color: #444; line-height: 1.6;"
-                            data-editable="pages.blog.articles.2.snippet"><p>Pour un costume, le pressing reste roi. Mais pour les couettes, les rideaux ou le linge quotidien, la laverie est 3 à 4 fois moins chère. Une couette au pressing coûte souvent plus de 20€, contre 9,50€ à 12€ chez nous, lessive comprise.</p></div>
+                        <div style="color: #444; line-height: 1.6;" data-editable="pages.blog.articles.2.snippet">
+                            <p>Pour un costume, le pressing reste roi. Mais pour les couettes, les rideaux ou le linge
+                                quotidien, la laverie est 3 à 4 fois moins chère. Une couette au pressing coûte souvent
+                                plus de 20€, contre 9,50€ à 12€ chez nous, lessive comprise.</p>
+                        </div>
                     </article>
                     <article id="sechage-rapide-astuces"
                         style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);">
-                        <img src="/images/sechage-rapide-couette-lens-dimanche.jpg" alt="Séchage rapide de couettes et linge de lit à Lens ouvert le dimanche"
+                        <img src="/images/sechage-rapide-couette-lens-dimanche.jpg"
+                            alt="Séchage rapide de couettes et linge de lit à Lens ouvert le dimanche"
                             style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;"
                             data-editable="pages.blog.articles.3.image">
                         <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #2d3e30;"
                             data-editable="pages.blog.articles.3.title">Séchage rapide : 3 astuces de pro</h2>
 
-                        <div style="color: #444; line-height: 1.6;"
-                            data-editable="pages.blog.articles.3.snippet"><p>1. Ne surchargez pas le séchoir : l'air chaud doit circuler. <br>2. Séparez le synthétique du coton. <br>3. Insérez le linge encore chaud dans votre sac pour faciliter le pliage et éviter le repassage.</p></div>
+                        <div style="color: #444; line-height: 1.6;" data-editable="pages.blog.articles.3.snippet">
+                            <p>1. Ne surchargez pas le séchoir : l'air chaud doit circuler. <br>2. Séparez le
+                                synthétique du coton. <br>3. Insérez le linge encore chaud dans votre sac pour faciliter
+                                le pliage et éviter le repassage.</p>
+                        </div>
                     </article>
                     <article id="laverie-ouverte-dimanche-lens"
                         style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);">
-                        <img src="/images/laverie-automatique-lens-route-de-lille-libre-service-7j7.jpg" alt="Laverie automatique ouverte 7j/7 et jours fériés à Lens 62300"
+                        <img src="/images/laverie-automatique-lens-route-de-lille-libre-service-7j7.jpg"
+                            alt="Laverie automatique ouverte 7j/7 et jours fériés à Lens 62300"
                             style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;"
                             data-editable="pages.blog.articles.4.image">
                         <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: #2d3e30;"
                             data-editable="pages.blog.articles.4.title">Laverie ouverte le dimanche à Lens</h2>
 
-                        <div style="color: #444; line-height: 1.6;"
-                            data-editable="pages.blog.articles.4.snippet"><p>Le dimanche est souvent le jour des corvées ménagères. Heureusement, La Laverie Lens est ouverte non-stop de 6h à 21h, même le dimanche. Profitez du calme du quartier Route de Lille pour faire votre lessive tranquillement.</p></div>
+                        <div style="color: #444; line-height: 1.6;" data-editable="pages.blog.articles.4.snippet">
+                            <p>Le dimanche est souvent le jour des corvées ménagères. Heureusement, La Laverie Lens est
+                                ouverte non-stop de 6h à 21h, même le dimanche. Profitez du calme du quartier Route de
+                                Lille pour faire votre lessive tranquillement.</p>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -165,11 +260,14 @@
 
     <footer class="footer-soft">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; justify-content: space-between;">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; justify-content: space-between;">
                 <div style="flex: 1; min-width: 250px;">
                     <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">La Laverie Lens</h4>
                     <p class="seo-text-light" style="margin-bottom: 0;">
-                        Laverie automatique ouvert 7/7 de 6h à 21h desservant Lens, Sallaumines, Loison-sous-Lens, Annay et Noyelles-sous-Lens. Située sur l&#x27;axe principal Route de Lille au 310 à proximité du Bar Le Rami et Roc Eclerc.
+                        Laverie automatique ouvert 7/7 de 6h à 21h desservant Lens, Sallaumines, Loison-sous-Lens, Annay
+                        et Noyelles-sous-Lens. Située sur l&#x27;axe principal Route de Lille au 310 à proximité du Bar
+                        Le Rami et Roc Eclerc.
                     </p>
                 </div>
                 <div style="flex: 1; min-width: 200px;">
@@ -192,7 +290,7 @@
                     </ul>
                 </div>
             </div>
-    
+
             <div style="border-top: 1px solid #eee; padding-top: 20px; padding-bottom: 20px; text-align: center;">
                 <h4 style="font-size: 1rem; margin-bottom: 15px; color: #333;">Suivez-nous</h4>
                 <a href="https://www.facebook.com/lalaverielens" target="_blank" rel="noopener noreferrer"
@@ -204,19 +302,39 @@
                     </svg>
                     La Laverie Lens sur Facebook
                 </a>
-                <a href="/shop.html"
-                    style="display: inline-flex; align-items: center; gap: 8px; background: #ffeb3b; color: #1a1a1a; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.2s;"
-                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <span>🛒</span> Boutique Shop
-                </a>
+
             </div>
-    
+
             <div class="footer-meta" style="border-top: 1px solid #eee; padding-top: 20px; text-align: center;">
                 &copy; <span id="year">2026</span> La Laverie Lens.
             </div>
         </div>
     </footer>
-    <script> document.getElementById('year').textContent = new Date().getFullYear(); </script>    
+    <script> document.getElementById('year').textContent = new Date().getFullYear(); </script>
+
+    <!-- Simple Mobile FAB -->
+
+
+    <nav class="mobile-bottom-nav"
+        style="background: #fff; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); border-radius: 20px 20px 0 0;">
+        <div class="mobile-nav-container"
+            style="display: flex; justify-content: space-around; align-items: center; height: 70px; position: relative;">
+
+            <a href="/" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span>Accueil</span></a>
+            <a href="/tarifs.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">💳</span><span>Tarifs</span></a>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank"
+                style="position: relative; top: -20px; background: #2d6a4f; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(45, 106, 79, 0.4); border: 4px solid #fff; text-decoration: none; z-index: 10;">
+                <span style="font-size: 1.8rem; line-height: 1;">🚀​</span>
+            </a>
+
+            <a href="/services.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">🧺</span><span>Services</span></a>
+            <a href="/shop.html" class="mobile-nav-item shop-btn"><span class="mobile-nav-icon">🛒</span></a>
+        </div>
+    </nav>
+
 </body>
 
 </html>

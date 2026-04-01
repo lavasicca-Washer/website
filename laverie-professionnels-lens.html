@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laverie pour Professionnels Lens (62) | Conciergerie, Airbnb & Gros Volumes</title>
+    <meta name="description"
+        content="Service de laverie automatique adapté aux professionnels à Lens : Airbnb, conciergeries, hôtels, restaurants, clubs sportifs. Machines 20kg, lessive pro et facture en ligne." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&display=swap" rel="stylesheet">
+
+    <script>
+        document.documentElement.style.setProperty('--font-main-family', "'Instrument Sans', sans-serif");
+    </script>
+
+    <style>
+        :root {
+            --font-main: var(--font-main-family, 'Instrument Sans', sans-serif);
+            --accent-green: #2d6a4f;
+            --primary-color: #2d3e30;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: #1a1a1a;
+            background: #fff;
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Reprise de vos styles principaux */
+        .hero-text h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .section-pad {
+            padding: 80px 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            box-sizing: border-box;
+        }
+
+        .clean-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card-soft {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-soft h3 {
+            color: var(--accent-green);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-black {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn-black:hover {
+            background: #333;
+        }
+
+        .btn-black-small {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .input-line {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: #2d3e30;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @media(min-width: 768px) {
+            .seo-nav {
+                display: flex !important;
+            }
+        }
+
+        /* Form AJAX */
+        .minimal-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+
+
+
+        /* ========================================= */
+        /* BARRE DE NAVIGATION MOBILE (BOTTOM BAR)   */
+        /* ========================================= */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 9999;
+            border-radius: 20px 20px 0 0;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .mobile-nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70px;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex: 1;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav-item:active {
+            color: var(--accent-green);
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav-item.shop-btn {
+            color: #1a1a1a;
+        }
+
+        .mobile-nav-item.shop-btn .mobile-nav-icon {
+            background: #ffeb3b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 8px rgba(255, 235, 59, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+
+        /* ^^^ FIN DU CODE CSS ICI ^^^ */
+    </style>
+
+    <link rel="canonical" href="https://www.lalaverielens.fr/laverie-professionnels-lens" />
+    <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="/" class="logo-link">
+                <img src="/images/logo-horizontal.png" alt="La Laverie Automatique Lens"
+                    style="height: 90px; vertical-align: middle;">
+            </a>
+            <div class="header-actions">
+                <nav style="display: none; gap: 20px; margin-right: 20px; align-items: center;" class="seo-nav">
+                    <a href="/services"
+                        style="color:white; font-size: 0.9rem; font-weight: 500; text-decoration: none;">Services</a>
+                    <a href="/lavage-couette-lens"
+                        style="color:white; font-size: 0.9rem; font-weight: 500; text-decoration: none;">Lavage
+                        Couettes</a>
+                    <a href="/laverie-professionnels-lens"
+                        style="color:white; font-size: 0.9rem; font-weight: 700; text-decoration: none;">Espace
+                        Pro</a>
+                    <a href="/tarifs"
+                        style="color:white; font-size: 0.9rem; font-weight: 500; text-decoration: none;">Tarifs</a>
+                    <a href="/blog"
+                        style="color:white; font-size: 0.9rem; font-weight: 500; text-decoration: none;">Blog</a>
+                    <a href="/shop"
+                        style="display:inline-flex; align-items:center; gap:5px; background:#ffeb3b; color:#1a1a1a; font-size: 0.85rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration:none;"><span>🛒</span>
+                        Shop</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-soft" style="position: relative; overflow: hidden; background: #f8f9fa; padding: 60px 0;">
+            <div class="container hero-split">
+                <div class="hero-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <div
+                        style='display:inline-flex;align-items:center;gap:10px;background:rgba(45,106,79,0.12);color:var(--accent-green);padding:8px 18px;border-radius:50px;font-size:0.95rem;font-weight:700;margin-bottom:20px; text-transform: uppercase; letter-spacing: 1px;'>
+                        Service B2B & Entreprises Lens
+                    </div>
+
+                    <h1 style="font-size: clamp(2.2rem, 5vw, 4rem);"><strong><span style='color:#2d6a4f'>Laverie pour
+                                Professionnels</span><br>Conciergeries, Airbnb & Clubs Sportifs</strong></h1>
+
+                    <p
+                        style="font-size: 1.15rem; color: #555; margin: 0 auto 40px auto; max-width: 750px; line-height: 1.7;">
+                        Déléguez le nettoyage de votre <strong>blanchisserie professionnelle</strong> à La Laverie Lens.
+                        Nos lave-linges industriels de 20kg et notre lessive désinfectante sont parfaits pour le
+                        traitement des <strong>gros volumes</strong> (couettes, linge de lit, éponges). Profitez d'un
+                        service flexible, sans engagement, avec <strong>facturation simplifiée en ligne</strong> pour
+                        votre comptabilité.
+                    </p>
+
+                    <div class="hero-actions"
+                        style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <a href="#facture" class="btn-black">Demander une facture</a>
+                        <a href="/tarifs"
+                            style="display:inline-flex; align-items:center; gap:8px; background:transparent; border: 2px solid rgba(0,0,0,0.35); color:#1a1a1a; padding:12px 28px; border-radius:50px; font-weight:600; font-size:1rem; text-decoration:none;">Voir
+                            nos tarifs Pros</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-pad">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 10px; font-size: 2rem;">Des solutions adaptées à votre
+                    activité</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1rem;">Aucun contrat
+                    d'engagement. Venez quand vous voulez, payez ce que vous lavez.</p>
+
+                <div class="clean-grid">
+                    <div class="card-soft">
+                        <h3>🛏️ Gestionnaires Airbnb & Conciergeries</h3>
+                        <p style="color: #555; font-size: 0.95rem;">Le roulement du linge de maison exige de la
+                            rapidité. Lavez plusieurs <strong>parures de lits, housses de couettes et serviettes
+                                éponges</strong> en un seul cycle grâce à nos tambours 20kg. Notre séchage haute
+                            performance (17kg) vous garantit un linge prêt à ranger en moins de 45 minutes entre deux
+                            locations.</p>
+                    </div>
+                    <div class="card-soft">
+                        <h3>🍽️ Restauration, Hôtellerie & Traiteurs</h3>
+                        <p style="color: #555; font-size: 0.95rem;">L'hygiène est la priorité absolue de votre
+                            établissement. Notre <strong>lessive professionnelle (offerte)</strong> est injectée
+                            automatiquement pour désinfecter et détacher en profondeur vos <strong>nappes, serviettes de
+                                table, tabliers et tenues de cuisine</strong>, même sur des cycles à basse température.
+                        </p>
+                    </div>
+                    <div class="card-soft">
+                        <h3>⚽ Clubs Sportifs & Associations</h3>
+                        <p style="color: #555; font-size: 0.95rem;">Ne perdez plus de temps à laver les équipements un
+                            par un. Insérez le sac complet dans notre machine XXL et lavez les <strong>jeux de maillots,
+                                shorts, chaussettes et chasubles</strong> de toute une équipe sportive en 35 minutes,
+                            prêts pour le match du week-end.</p>
+                    </div>
+                    <div class="card-soft">
+                        <h3>💇‍♀️ Salons de Coiffure, Beauté & Spas</h3>
+                        <p style="color: #555; font-size: 0.95rem;">Confiez-nous vos montagnes de serviettes éponges et
+                            peignoirs. Vous obtiendrez un résultat moelleux et parfumé pour vos clients. La
+                            <strong>gestion de vos notes de frais</strong> est grandement facilitée par notre système de
+                            demande de <strong>facture avec TVA en ligne</strong>, traitée sous 24h.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="facture" class="section-pad" style="background: #f1f8f4;">
+            <div class="container" style="max-width: 1400px;">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <span style="font-size: 3.5rem;">🧾</span>
+                    <h2 style="font-size: 2.4rem; margin-bottom: 14px; color: var(--primary-color);">Service de
+                        Facturation Facile</h2>
+                    <p style="color: #555; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Vous venez de laver
+                        votre linge à La Laverie Lens ? Remplissez le formulaire
+                        ci-dessous avec les détails de votre passage. Notre équipe vous enverra votre facture conforme
+                        (avec TVA) sous 24h ouvrées par e-mail.</p>
+                </div>
+
+                <div id="msg-succes"
+                    style="display: none; background: #e6f4ea; border: 1px solid #2d6a4f; color: #1b4332; padding: 20px; border-radius: 8px; text-align: center; font-weight: 500; line-height: 1.5; margin-bottom: 10px;">
+                    ✅ Demande envoyée avec succès.<br>Votre facture sera traitée et envoyée sous 24h.<br><i>L'équipe La
+                        Laverie Lens</i>
+                </div>
+
+                <form id="contact-form" class="minimal-form" action="https://formsubmit.co/ajax/lavasicca@gmail.com"
+                    method="POST" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; max-width: 100%;">
+                    <input type="hidden" name="_subject" value="URGENT PRO - Demande de facture La Laverie Lens">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">
+
+                    <div
+                        style="grid-column: 1 / -1; background: #eef2ff; border-left: 4px solid #4ade80; padding: 15px; margin-bottom: 20px; font-size: 0.9rem; color: #333;">
+                        <strong>Note aux professionnels :</strong> Cochez la case facture pour afficher les champs
+                        nécessaires à votre comptabilité.
+                    </div>
+
+                    <!-- Colonne gauche : champs de base -->
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <input type="text" name="name" placeholder="Votre Nom *" class="input-line"
+                            style="width: 100%; box-sizing:border-box;" required>
+                        <input type="email" name="email" placeholder="Votre Email (pour l'envoi de la facture) *"
+                            class="input-line" style="width: 100%; box-sizing:border-box;" required>
+                        <input type="tel" name="phone" placeholder="Votre Téléphone *" class="input-line"
+                            style="width: 100%; box-sizing:border-box;" required>
+
+                        <div
+                            style="margin-top: 4px; text-align: left; background: #fafafa; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                            <label
+                                style="cursor: pointer; font-weight: 700; font-size: 1rem; color: #2d6a4f; display: inline-flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" id="check-facture" name="Demande_Facture" value="Oui"
+                                    style="width: 18px; height: 18px; accent-color: #2d6a4f;">
+                                📄 Je demande une facture
+                            </label>
+                        </div>
+
+                        <textarea name="message"
+                            placeholder="Précisez ici les machines utilisées (ex: 1 machine 20kg + 2 séchages) ou toute autre information utile *"
+                            class="input-line" rows="4" style="resize:none; width:100%; box-sizing:border-box; flex:1;"
+                            required></textarea>
+                    </div>
+
+                    <!-- Colonne droite : bloc facture + bouton -->
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div id="bloc-facture"
+                            style="display: none; background: #fff; padding: 20px; border-radius: 8px; border: 2px solid var(--accent-green); text-align: left; box-shadow: 0 4px 15px rgba(45,106,79,0.1);">
+                            <p
+                                style="font-size: 0.9rem; color: #1b4332; margin-bottom: 15px; font-weight: 600; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                Détails de l'entreprise et de la transaction :</p>
+
+                            <div style="display:flex; gap:10px; margin-bottom: 10px; width: 100%;">
+                                <input type="text" id="fac-nom" name="Facture_Nom_Societe"
+                                    placeholder="Nom de l'entreprise / Conciergerie *" class="input-line"
+                                    style="flex:1; min-width:0; box-sizing:border-box; background: #f9f9f9;">
+                                <input type="text" id="fac-prenom" name="Facture_Prenom"
+                                    placeholder="Prénom du demandeur *" class="input-line"
+                                    style="flex:1; min-width:0; box-sizing:border-box; background: #f9f9f9;">
+                            </div>
+
+                            <input type="text" id="fac-adresse" name="Facture_Adresse"
+                                placeholder="Adresse complète de facturation (avec CP et Ville) *" class="input-line"
+                                style="width: 100%; margin-bottom: 10px; box-sizing:border-box; background: #f9f9f9;">
+
+                            <div style="display:flex; gap:10px; margin-bottom: 5px; width: 100%;">
+                                <input type="number" step="0.01" min="0" id="fac-montant" name="Facture_Montant"
+                                    placeholder="Montant payé (ex: 21.50) *" class="input-line"
+                                    style="flex:1; min-width:0; box-sizing:border-box; background: #f9f9f9;">
+                                <input type="date" id="fac-date" name="Facture_Date" class="input-line"
+                                    style="flex:1; min-width:0; box-sizing:border-box; background: #f9f9f9; color: #555;"
+                                    title="Date de votre passage en laverie">
+                            </div>
+                        </div>
+
+                        <div style="text-align:right; margin-top: auto;">
+                            <button type="submit" class="btn-black-small"
+                                style="font-size: 1.1rem; padding: 12px 30px;">Envoyer la demande</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <script>
+            // Gestion de la case à cocher Facture
+            const checkFacture = document.getElementById('check-facture');
+            const blocFacture = document.getElementById('bloc-facture');
+            const facInputs = [
+                document.getElementById('fac-nom'),
+                document.getElementById('fac-prenom'),
+                document.getElementById('fac-adresse'),
+                document.getElementById('fac-montant'),
+                document.getElementById('fac-date')
+            ];
+
+            checkFacture.addEventListener('change', function () {
+                if (this.checked) {
+                    blocFacture.style.display = 'block';
+                    facInputs.forEach(input => input.required = true);
+                } else {
+                    blocFacture.style.display = 'none';
+                    facInputs.forEach(input => {
+                        input.required = false;
+                        input.value = '';
+                    });
+                }
+            });
+
+            // Envoi AJAX FormSubmit
+            const form = document.getElementById('contact-form');
+            const msgSucces = document.getElementById('msg-succes');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const btn = form.querySelector('button[type="submit"]');
+                btn.textContent = 'Envoi en cours...';
+                btn.style.opacity = '0.7';
+                btn.disabled = true;
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        form.style.display = 'none';
+                        msgSucces.style.display = 'block';
+                    })
+                    .catch(error => {
+                        alert("Une erreur s'est produite. Veuillez réessayer.");
+                        btn.textContent = 'Envoyer la demande';
+                        btn.style.opacity = '1';
+                        btn.disabled = false;
+                    });
+            });
+        </script>
+    </main>
+
+    <footer class="footer-soft" style="background: #f8f9fa; padding: 60px 0 30px; border-top: 1px solid #eee;">
+        <div class="container">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; justify-content: space-between;">
+                <div style="flex: 1; min-width: 250px;">
+                    <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">La Laverie Lens</h4>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 0;">Laverie automatique
+                        ouvert 7/7 de 6h à 21h desservant Lens, Sallaumines, Loison-sous-Lens, Annay et
+                        Noyelles-sous-Lens. Située au 310 Route de Lille.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">Services</h4>
+                    <ul style="list-style: none; padding: 0; color: #666; font-size: 0.9rem; line-height: 1.8;">
+                        <li><a href="/services" style="color: #666; text-decoration: none;">Machines 6kg à 20kg</a></li>
+                        <li><a href="/lavage-couette-lens" style="color: #666; text-decoration: none;">Lavage
+                                Couettes</a></li>
+                        <li><a href="/sechage-rapide-lens" style="color: #666; text-decoration: none;">Séchage
+                                Rapide</a></li>
+                        <li><a href="/laverie-professionnels-lens"
+                                style="color: var(--accent-green); font-weight:600; text-decoration: none;">Espace
+                                Professionnels</a></li>
+                        <li><a href="/tarifs" style="color: #666; text-decoration: none;">Nos Tarifs</a></li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: #333;">Infos Pratiques</h4>
+                    <ul style="list-style: none; padding: 0; color: #666; font-size: 0.9rem; line-height: 1.8;">
+                        <li><a href="/faq" style="color: #666; text-decoration: none;">Questions Fréquentes</a></li>
+                        <li><a href="/contact" style="color: #666; text-decoration: none;">Plan d'accès</a></li>
+                        <li><a href="/blog" style="color: #666; text-decoration: none;">Conseils & Actualités</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid #eee; padding-top: 20px; text-align: center; color: #888; font-size: 0.85rem;">
+                © <span id="year">2026</span> La Laverie Lens. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+    <script> document.getElementById('year').textContent = new Date().getFullYear(); </script>
+
+    <!-- Simple Mobile FAB -->
+
+
+    <nav class="mobile-bottom-nav"
+        style="background: #fff; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); border-radius: 20px 20px 0 0;">
+        <div class="mobile-nav-container"
+            style="display: flex; justify-content: space-around; align-items: center; height: 70px; position: relative;">
+
+            <a href="/" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span>Accueil</span></a>
+            <a href="/tarifs.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">💳</span><span>Tarifs</span></a>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank"
+                style="position: relative; top: -20px; background: #2d6a4f; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(45, 106, 79, 0.4); border: 4px solid #fff; text-decoration: none; z-index: 10;">
+                <span style="font-size: 1.8rem; line-height: 1;">🚀​</span>
+            </a>
+
+            <a href="/services.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">🧺</span><span>Services</span></a>
+            <a href="/shop.html" class="mobile-nav-item shop-btn"><span class="mobile-nav-icon">🛒</span></a>
+        </div>
+    </nav>
+
+</body>
+
+</html>

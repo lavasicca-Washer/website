@@ -749,6 +749,80 @@
             color: #2d6a4f;
             font-weight: 500;
         }
+
+
+        /* ========================================= */
+        /* BARRE DE NAVIGATION MOBILE (BOTTOM BAR)   */
+        /* ========================================= */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 9999;
+            border-radius: 20px 20px 0 0;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .mobile-nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70px;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex: 1;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav-item:active {
+            color: var(--accent-green);
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .mobile-nav-item.shop-btn {
+            color: #1a1a1a;
+        }
+
+        .mobile-nav-item.shop-btn .mobile-nav-icon {
+            background: #ffeb3b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 8px rgba(255, 235, 59, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+
+        /* ^^^ FIN DU CODE CSS ICI ^^^ */
     </style>
     <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
 </head>
@@ -763,12 +837,12 @@
             </a>
             <div class="header-actions">
                 <nav class="seo-nav">
-                    <a href="/services.html">Services</a>
-                    <a href="/lavage-couette-lens.html">Lavage Couettes</a>
-                    <a href="/sechage-rapide-lens.html">Séchage Rapide</a>
-                    <a href="/tarifs.html">Tarifs</a>
-                    <a href="/blog.html">Blog</a>
-                    <a href="/shop.html" class="shop-link" style="animation: shopPulse 2s infinite;"><span>🛒</span>
+                    <a href="/services">Services</a>
+                    <a href="/lavage-couette-lens">Lavage Couettes</a>
+                    <a href="/sechage-rapide-lens">Séchage Rapide</a>
+                    <a href="/tarifs">Tarifs</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/shop" class="shop-link" style="animation: shopPulse 2s infinite;"><span>🛒</span>
                         Shop</a>
                 </nav>
                 <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank"
@@ -855,15 +929,62 @@
                     </div>
                 </div>
 
+                <!-- AVANT / APRES -->
+                <div
+                    style="margin-top: 30px; margin-bottom: 30px; background: #f8f9fa; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #1a1a1a;">✨ Mode d'emploi en 3 étapes
+                        :</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; color: #555; font-size: 0.95rem;">
+                        <li style="margin-bottom: 10px;"><strong>1. Brossez à sec :</strong> Utilisez la brosse à
+                            poils durs pour retirer la terre et la saleté superficielle.</li>
+                        <li style="margin-bottom: 10px;"><strong>2. Vaporisez & Frottez :</strong> Appliquez la
+                            mousse experte et frottez doucement avec la brosse souple (idéal pour le daim et le
+                            mesh).</li>
+                        <li><strong>3. Essuyez :</strong> Passez le chiffon microfibre haute densité pour absorber
+                            la saleté. Résultat immédiat, sans rinçage !</li>
+                    </ul>
+
+                    <div
+                        style="background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px dashed #ccc;">
+                        <p
+                            style="font-weight: 600; color: var(--accent-green); margin-bottom: 15px; font-size: 0.95rem;">
+                            L'efficacité en image :</p>
+
+                        <div style="display: flex; gap: 15px; justify-content: center;">
+
+                            <div style="flex: 1; position: relative;">
+                                <span
+                                    style="position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.6); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; backdrop-filter: blur(2px);">👟
+                                    AVANT</span>
+
+                                <img src="/images/sneaker-avant.jpg" alt="Sneaker sale avant lavage"
+                                    style="width: 100%; height: auto; border-radius: 6px; aspect-ratio: 4/3; object-fit: cover; background-color: #f1f1f1;">
+                            </div>
+
+                            <div style="flex: 1; position: relative;">
+                                <span
+                                    style="position: absolute; top: 8px; left: 8px; background: var(--accent-green); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">✨
+                                    APRÈS</span>
+
+                                <img src="/images/sneaker-apres.jpg" alt="Sneaker propre éclatante"
+                                    style="width: 100%; height: auto; border-radius: 6px; aspect-ratio: 4/3; object-fit: cover; background-color: #e6f4ea;">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
                 <!-- CTA -->
                 <div class="cta-block">
-                    <div class="urgency-line"><span class="dot-live"></span> Stock disponible — commande traitée sous
+                    <div class="urgency-line"><span class="dot-live"></span> Stock disponible — commande traitée
+                        sous
                         24h
                     </div>
                     <button class="add-to-cart-btn" onclick="addToCart()"><span>🛒</span> Commander — <span
                             id="priceBtn">18.9
                             €</span></button>
-                    <p class="secure-note">🔒 Paiement sécurisé par CB via Stripe · Aucune donnée bancaire stockée</p>
+                    <p class="secure-note">🔒 Paiement sécurisé par CB via Stripe · Aucune donnée bancaire stockée
+                    </p>
                 </div>
 
                 <!-- Mini perks -->
@@ -888,7 +1009,8 @@
                 <!-- Shipping note -->
                 <div class="ship-note">
                     <span>📦</span>
-                    <div><strong>Expédition depuis notre entrepôt logistique partenaire.</strong> Délai estimé : sous 15
+                    <div><strong>Expédition depuis notre entrepôt logistique partenaire.</strong> Délai estimé :
+                        sous 15
                         jours
                         ouvrés via Colissimo suivi. L'enlèvement en laverie à Lens n'est pas disponible.</div>
                 </div>
@@ -935,14 +1057,23 @@
                             <input type="email" id="input-email" class="form-input" required
                                 placeholder="jean.dupont@email.com">
                         </div>
-                        <div class="form-group address-wrapper"> <label>Adresse complète</label> <input type="text"
-                                id="address-input" class="form-input" required autocomplete="off"
-                                placeholder="Commencez à taper votre adresse...">
-                            <ul id="address-suggestions" class="suggestions-list"
-                                style="position:absolute; top:100%; left:0; width:100%; background:#fff; border:1px solid #ddd; border-radius:0 0 8px 8px; z-index:1000; list-style:none; padding:0; display:none; max-height:200px; overflow-y:auto;">
-                            </ul>
-                        </div>
 
+
+                        <div style="margin-bottom: 15px; position: relative;">
+
+                            <label
+                                style="display: block; font-size: 0.85rem; font-weight: 500; color: #1a1a1a; margin-bottom: 6px;">Adresse
+                                complète *</label>
+
+                            <input type="text" id="adresse-recherche" name="adresse"
+                                placeholder="ex: 10 rue de la République..." class="input-line"
+                                style="width: 100%; box-sizing: border-box; margin: 0;" required autocomplete="off">
+
+                            <ul id="adresse-suggestions"
+                                style="display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; border: 1px solid #ddd; border-top: none; border-radius: 0 0 8px 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); padding: 0; margin: 0; list-style: none; z-index: 9999; max-height: 220px; overflow-y: auto; box-sizing: border-box;">
+                            </ul>
+
+                        </div>
 
                         <h3 style="margin:24px 0 14px;">Paiement</h3>
                         <div class="payment-option">
@@ -972,7 +1103,8 @@
                         <p style="font-size:.88rem;color:#666;margin-top: 15px;">Un email de confirmation vous a été
                             envoyé.
                             Nous vous tiendrons informé de l'expédition sous 15 jours.</p>
-                        <button class="btn-block btn-secondary" onclick="window.location.href='/shop.html'">Retour à la
+                        <button class="btn-block btn-secondary" onclick="window.location.href='/shop.html'">Retour à
+                            la
                             boutique</button>
                     </div>
                 </div>
@@ -1196,8 +1328,42 @@
             }
         </script>
 
-        A
+
     </main>
+
+    <div style="margin-top: 50px; margin-bottom: 50px;">
+        <div
+            style="background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+
+            <div style="display: flex; align-items: flex-start; gap: 18px;">
+                <div
+                    style="background: rgba(45, 106, 79, 0.1); color: var(--accent-green); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;">
+                    💡
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.15rem; margin: 0 0 10px 0; color: #1a1a1a;">Peut-on laver ses sneakers
+                        directement dans nos machines à Lens ?</h3>
+                    <p style="margin: 0 0 15px 0; color: #555; font-size: 0.95rem; line-height: 1.6;">
+                        <strong>Oui, mais avec prudence !</strong> Si vous souhaitez utiliser nos machines de 6kg,
+                        retirez obligatoirement les lacets et les semelles. Placez vos chaussures dans un filet de
+                        protection avec de vieilles serviettes pour amortir les chocs contre le tambour.
+                    </p>
+
+                    <div
+                        style="background: #f8f9fa; padding: 15px 20px; border-radius: 8px; border-left: 4px solid var(--accent-green);">
+                        <p style="margin: 0; color: #1a1a1a; font-size: 0.95rem; line-height: 1.5;">
+                            <strong>La recommandation de nos experts :</strong> La chaleur de l'eau et la force
+                            centrifuge peuvent décoller les semelles ou abîmer les cuirs. C'est pour cela que nous
+                            conseillons ce <strong>Kit Rénovateur Pro</strong> : un nettoyage à la main, doux et sans
+                            immersion, pour prolonger la durée de vie de vos paires !
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer class="footer-soft" style="background: #f8f9fa; padding: 60px 0 30px; border-top: 1px solid #eee;">
         <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
@@ -1234,9 +1400,7 @@
 
             <div style="border-top: 1px solid #eee; padding-top: 20px; padding-bottom: 20px; text-align: center;">
                 <h4 style="font-size: 1rem; margin-bottom: 15px; color: #333;">Suivez-nous</h4>
-                <a href="/shop.html"
-                    style="display:inline-flex; align-items:center; gap:5px; background:#ffeb3b; color:#1a1a1a; font-size: 0.85rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration:none; animation: shopPulse 2s infinite;"><span>🛒</span>
-                    Shop</a>
+
                 <a href="https://www.facebook.com/lalaverielens" target="_blank" rel="noopener noreferrer"
                     style="display: inline-flex; align-items: center; gap: 8px; background: #1877f2; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: transform 0.2s;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1255,6 +1419,97 @@
     </footer>
 
     <script> document.getElementById('year-copy').textContent = new Date().getFullYear(); </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputAdresse = document.getElementById('adresse-recherche');
+            const listeSuggestions = document.getElementById('adresse-suggestions');
+            let timeoutId;
+
+            inputAdresse.addEventListener('input', function () {
+                const query = this.value;
+
+                if (query.length < 3) {
+                    listeSuggestions.style.display = 'none';
+                    return;
+                }
+
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+
+                    fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&limit=5`)
+                        .then(response => response.json())
+                        .then(data => {
+                            listeSuggestions.innerHTML = '';
+
+                            if (data.features.length > 0) {
+                                data.features.forEach(feature => {
+                                    const li = document.createElement('li');
+
+                                    li.textContent = feature.properties.label;
+                                    // Style de la liste pour correspondre à votre design
+                                    li.style.padding = '12px 15px';
+                                    li.style.cursor = 'pointer';
+                                    li.style.borderBottom = '1px solid #f5f5f5';
+                                    li.style.fontSize = '0.95rem';
+                                    li.style.color = '#333';
+                                    li.style.fontFamily = 'inherit';
+                                    li.style.transition = 'background 0.2s';
+
+                                    // Effet au survol (Vert pastel très léger)
+                                    li.addEventListener('mouseover', () => li.style.background = '#f1f8f4');
+                                    li.addEventListener('mouseout', () => li.style.background = '#fff');
+
+                                    li.addEventListener('click', function () {
+                                        inputAdresse.value = feature.properties.label;
+                                        listeSuggestions.style.display = 'none';
+                                    });
+
+                                    listeSuggestions.appendChild(li);
+                                });
+                                listeSuggestions.style.display = 'block';
+                            } else {
+                                listeSuggestions.style.display = 'none';
+                            }
+                        })
+                        .catch(error => console.error('Erreur API Adresse:', error));
+
+                }, 300); // Délai de 300ms
+            });
+
+            // Fermer la liste si on clique à côté
+            document.addEventListener('click', function (e) {
+                if (e.target !== inputAdresse) {
+                    listeSuggestions.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <!-- Simple Mobile FAB -->
+
+
+    <nav class="mobile-bottom-nav"
+        style="background: #fff; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); border-radius: 20px 20px 0 0;">
+        <div class="mobile-nav-container"
+            style="display: flex; justify-content: space-around; align-items: center; height: 70px; position: relative;">
+
+            <a href="/" class="mobile-nav-item"><span class="mobile-nav-icon">🏠</span><span>Accueil</span></a>
+            <a href="/tarifs.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">💳</span><span>Tarifs</span></a>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank"
+                style="position: relative; top: -20px; background: #2d6a4f; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(45, 106, 79, 0.4); border: 4px solid #fff; text-decoration: none; z-index: 10;">
+                <span style="font-size: 1.8rem; line-height: 1;">🚀​</span>
+            </a>
+
+            <a href="/services.html" class="mobile-nav-item"><span
+                    class="mobile-nav-icon">🧺</span><span>Services</span></a>
+            <a href="/shop.html" class="mobile-nav-item shop-btn"><span class="mobile-nav-icon">🛒</span></a>
+        </div>
+    </nav>
+
+
 </body>
 
 </html>
