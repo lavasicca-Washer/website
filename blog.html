@@ -8,9 +8,8 @@
     <meta name="description"
         content="Conseils et astuces pour votre linge à Lens. Comment laver une couette, économiser sur la lessive, guide étudiant." />
     <link rel="canonical" href="https://www.lalaverielens.fr/blog" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
 
     <script>document.documentElement.style.setProperty('--primary-color', '#2d6a4f');</script>
     <script>document.documentElement.style.setProperty('--secondary-color', '#f8f9fa');</script>
@@ -117,14 +116,35 @@
     <script type="module" crossorigin src="/assets/modulepreload-polyfill-b5qt9emx.js"></script>
     <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
+    <link rel="preload" href="/assets/style-dp_sgbv8.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/style-dp_sgbv8.css"></noscript>
+    <style>
+        :root {
+            --accent-green: var(--primary-color, #2d6a4f);
+            --bg-secondary: var(--secondary-color, #f4f6f8);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header id="main-header">
         <div class="container header-container">
             <a href="/" class="logo-link">
-                <img src="/images/logo-horizontal.webp" alt="La Laverie Automatique Lens"
-                    style="height: 100px; vertical-align: middle;">
+                <img src="/images/logo-mobile.webp" 
+                    srcset="/images/logo-mobile.webp 1x, /images/logo-horizontal.webp 2x"
+                    alt="La Laverie Automatique Lens"
+                    width="166" height="60" style="height: 60px; vertical-align: middle;"
+                    loading="eager">
             </a>
             <div class="header-actions">
                 <!-- Top Navigation for SEO Internal Linking (Visible Desktop, Hidden Mobile if tight) -->
@@ -147,25 +167,6 @@
                 </a>
             </div>
         </div>
-        <style>
-            @media(min-width: 768px) {
-                .seo-nav {
-                    display: flex !important;
-                }
-            }
-
-            @keyframes shopPulse {
-
-                0%,
-                100% {
-                    box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.6);
-                }
-
-                50% {
-                    box-shadow: 0 0 0 6px rgba(255, 235, 59, 0);
-                }
-            }
-        </style>
     </header>
     <main>
         <section class="section-pad">

@@ -8,9 +8,8 @@
     <meta name="description"
         content="Comment se rendre à La Laverie Lens ? Plan d&#x27;accès, adresse et distances depuis les quartiers voisins." />
     <link rel="canonical" href="https://www.lalaverielens.fr/contact" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
 
     <script>document.documentElement.style.setProperty('--primary-color', '#2d6a4f');</script>
     <script>document.documentElement.style.setProperty('--secondary-color', '#f8f9fa');</script>
@@ -115,16 +114,35 @@
         /* ^^^ FIN DU CODE CSS ICI ^^^ */
     </style>
     <script type="module" crossorigin src="/assets/modulepreload-polyfill-b5qt9emx.js"></script>
-    <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
+    <link rel="preload" href="/assets/style-dp_sgbv8.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/style-dp_sgbv8.css"></noscript>
+    <style>
+        :root {
+            --accent-green: var(--primary-color, #2d6a4f);
+            --bg-secondary: var(--secondary-color, #f4f6f8);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header id="main-header">
         <div class="container header-container">
             <a href="/" class="logo-link">
-                <img src="/images/logo-horizontal.webp" alt="La Laverie Automatique Lens"
-                    style="height: 100px; vertical-align: middle;">
+                <img src="/images/logo-mobile.webp" 
+                    srcset="/images/logo-mobile.webp 1x, /images/logo-horizontal.webp 2x"
+                    alt="La Laverie Automatique Lens"
+                    width="166" height="60" style="height: 60px; vertical-align: middle;"
+                    loading="eager">
             </a>
             <div class="header-actions">
                 <!-- Top Navigation for SEO Internal Linking (Visible Desktop, Hidden Mobile if tight) -->
@@ -145,27 +163,6 @@
                     <span style="font-size: 1.5rem;">🛒</span>
                     <span class="cart-count"
                         style="position: absolute; top: -5px; right: -5px; background: #ffeb3b; color: black; font-size: 0.7rem; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: none; align-items: center; justify-content: center;">0</span>
-                </div>
-                <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank"
-                    class="btn-live-soft">
-                    Disponibilité <span class="dot"></span>
-                </a>
-            </div>
-        </div>
-        <style>
-            @media(min-width: 768px) {
-                .seo-nav {
-                    display: flex !important;
-                }
-            }
-
-            @keyframes shopPulse {
-
-                0%,
-                100% {
-                    box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.6);
-                }
-
                 50% {
                     box-shadow: 0 0 0 6px rgba(255, 235, 59, 0);
                 }
@@ -202,9 +199,9 @@
                 </div>
 
                 <div style="margin-top: 40px; width: 100%; border-radius: 24px; overflow: hidden; height: 400px;">
-                    <iframe style="width:100%; height:100%; border:0; filter: grayscale(100%); opacity: 0.8;"
+                    <iframe class="map-grayscale"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2536.8!2d2.842176!3d50.4362327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd3108077df289%3A0xd7d28f74125b7b6b!2sLa%20Laverie%20Lens%20%E2%80%93%20Laverie%20automatique!5e0!3m2!1sfr!2sfr"
-                        allowfullscreen="" loading="lazy"></iframe>
+                        allowfullscreen="" loading="lazy" title="Carte d'accès à La Laverie Lens"></iframe>
                 </div>
             </div>
         </section>
@@ -288,6 +285,7 @@
         </div>
     </nav>
 
+    <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
 </body>
 
 </html>

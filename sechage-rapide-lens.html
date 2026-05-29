@@ -10,10 +10,8 @@
     <link rel="canonical" href="https://www.lalaverielens.fr/sechage-rapide-lens" />
 
     <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
 
 
 
@@ -43,16 +41,45 @@
     }
     </script>
     <script type="module" crossorigin src="/assets/modulepreload-polyfill-b5qt9emx.js"></script>
-    <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style-dp_sgbv8.css">
+    <!-- LCP Preload -->
+    <link rel="preload" href="/assets/style-dp_sgbv8.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/style-dp_sgbv8.css"></noscript>
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-main: #1a1a1a;
+            --text-light: #666666;
+            --accent-green: #2d6a4f;
+            --accent-black: #000000;
+            --font-main: "Instrument Sans", sans-serif;
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 12px;
+            --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, .06);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header id="main-header">
         <div class="container header-container">
             <a href="/" class="logo-link">
-                <img src="/images/logo-horizontal.webp" alt="La Laverie Automatique Lens"
-                    style="height: 90px; vertical-align: middle;">
+                <img src="/images/logo-mobile.webp" 
+                    srcset="/images/logo-mobile.webp 1x, /images/logo-horizontal.webp 2x"
+                    alt="La Laverie Automatique Lens"
+                    width="166" height="60" style="height: 60px; vertical-align: middle;"
+                    loading="eager">
             </a>
             <div class="header-actions">
                 <nav style="display: none; gap: 20px; margin-right: 20px; align-items:center;" class="seo-nav">
@@ -66,100 +93,25 @@
                     <a href="/shop"
                         style="display:inline-flex; align-items:center; gap:5px; background:#ffeb3b; color:#1a1a1a; font-size: 0.85rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration:none; animation: shopPulse 2s infinite;"><span>🛒</span>
                         Shop</a>
-                </nav>
-                <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank"
+                    <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank"
                     class="btn-live-soft">
                     Disponibilité <span class="dot"></span>
                 </a>
+                </nav>
             </div>
         </div>
-        <style>
-            @media(min-width: 768px) {
-                .seo-nav {
-                    display: flex !important;
-                }
-            }
-
-            /* ========================================= */
-            /* BARRE DE NAVIGATION MOBILE (BOTTOM BAR)   */
-            /* ========================================= */
-            .mobile-bottom-nav {
-                display: none;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: #ffffff;
-                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-                z-index: 9999;
-                border-radius: 20px 20px 0 0;
-                padding-bottom: env(safe-area-inset-bottom);
-            }
-
-            .mobile-nav-container {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                height: 70px;
-            }
-
-            .mobile-nav-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                color: #666;
-                font-size: 0.75rem;
-                font-weight: 600;
-                flex: 1;
-                transition: color 0.2s;
-            }
-
-            .mobile-nav-item:active {
-                color: var(--accent-green);
-            }
-
-            .mobile-nav-icon {
-                font-size: 1.4rem;
-                margin-bottom: 4px;
-            }
-
-            .mobile-nav-item.shop-btn {
-                color: #1a1a1a;
-            }
-
-            .mobile-nav-item.shop-btn .mobile-nav-icon {
-                background: #ffeb3b;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 2px;
-                box-shadow: 0 2px 8px rgba(255, 235, 59, 0.4);
-            }
-
-            @media (max-width: 768px) {
-                .mobile-bottom-nav {
-                    display: block;
-                }
-
-                body {
-                    padding-bottom: 80px !important;
-                }
-            }
-
-            /* ^^^ FIN DU CODE CSS ICI ^^^ */
-        </style>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section class="hero-soft" style="min-height: 50vh; padding-top: 120px; --hero-opacity: 0.2;">
-            <img src="/images/seche-linge-grande-capacite-17kg-lens.webp" alt="Séchoirs professionnels grande capacité"
-                class="hero-bg" style="opacity: var(--hero-opacity); object-position: center;">
+            <img src="/images/sechage-mobile.webp" 
+                srcset="/images/sechage-mobile.webp 800w, /images/sechage-desktop.webp 1920w"
+                sizes="(max-width: 800px) 100vw, 1920px"
+                alt="Séchoirs professionnels grande capacité"
+                class="hero-bg" width="1920" height="1080" fetchpriority="high"
+                loading="eager"
+                style="opacity: var(--hero-opacity); object-position: center;">
             <div class="container hero-split">
                 <div class="hero-text">
                     <h1 data-editable="hero.title"><strong><span style='color:#2d6a4f'>Sec en 20min
@@ -485,6 +437,7 @@
         </div>
     </nav>
 
+    <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
 </body>
 
 </html>

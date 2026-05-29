@@ -9,11 +9,9 @@
         content="Kit nettoyage sneakers professionnel utilisé dans nos laveries. Efficace sur cuir, toile, nubuck. Livraison Colissimo. Satisfait ou remboursé.">
     <link rel="canonical" href="https://www.lalaverielens.fr/shop" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Sora:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="/assets/fonts/fonts.css">
+    <link rel="stylesheet" href="/assets/fonts/fonts.css">
     <script src="https://js.stripe.com/v3/"></script>
 
 
@@ -72,7 +70,8 @@
         }
 
         .logo-link img {
-            height: 50px;
+            width: 166px;
+            height: 60px;
             vertical-align: middle;
         }
 
@@ -833,7 +832,11 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo-link">
-                <img src="/images/logo-horizontal.webp" alt="La Laverie Automatique Lens">
+                <img src="/images/logo-mobile.webp" 
+                    srcset="/images/logo-mobile.webp 1x, /images/logo-horizontal.webp 2x"
+                    alt="La Laverie Automatique Lens"
+                    width="166" height="60" style="height: 60px; vertical-align: middle;"
+                    loading="eager">
             </a>
             <div class="header-actions">
                 <nav class="seo-nav">

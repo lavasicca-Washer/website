@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <title>Jeu Concours - La Laverie Lens | Gagnez un Lavage XXL 🧺</title>
+    <meta name="description" content="Laissez un avis Google sur La Laverie Lens et tentez de gagner votre prochain lavage XXL (20kg) offert ! Lessive professionnelle incluse." />
+    <link rel="canonical" href="https://www.lalaverielens.fr/jeu-concours" />
+
+    <!-- Google Fonts Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-main: #1a1a1a;
+            --text-light: #666666;
+            --accent-green: #2d6a4f;
+            --dark-green: #1b4332;
+            --deep-green: #0f251c;
+            --fluo-yellow: #ccff00;
+            --font-main: "Instrument Sans", sans-serif;
+            --font-heading: "Bebas Neue", "Impact", sans-serif;
+            --radius-xl: 32px;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            --shadow-glow: 0 0 25px rgba(204, 255, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.2s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px; /* Constrained width since this is highly focused and mobile-first */
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background-color: var(--dark-green);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .header-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-link img {
+            height: 48px;
+            vertical-align: middle;
+        }
+
+        .btn-back-site {
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back-site:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        /* Hero Contest Section */
+        .hero-contest {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--deep-green) 100%);
+            color: #ffffff;
+            padding: 40px 0 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative glowing circles behind the content */
+        .hero-contest::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.4) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-contest::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.08) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-contest {
+            background-color: var(--fluo-yellow);
+            color: var(--deep-green);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(204, 255, 0, 0.3);
+        }
+
+        .hero-contest h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 7vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .hero-contest h1 span {
+            color: var(--fluo-yellow);
+            display: block;
+            text-shadow: 0 0 15px rgba(204, 255, 0, 0.25);
+        }
+
+        .hero-contest .question-hook {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            color: #b3dfc9;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .instructions {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        /* Ligne de connexion verticale */
+        .instructions::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 33px;
+            bottom: 36px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--fluo-yellow) 0%, rgba(204, 255, 0, 0.15) 100%);
+            z-index: 1;
+        }
+
+        .instruction-step {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            color: #e2f0e9;
+            z-index: 2;
+        }
+
+        .instruction-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num {
+            background-color: var(--fluo-yellow);
+            color: var(--deep-green);
+            font-weight: 800;
+            font-size: 0.9rem;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            box-shadow: 0 0 12px rgba(204, 255, 0, 0.35);
+            border: 2px solid var(--dark-green);
+        }
+
+        .instruction-step p strong {
+            color: var(--fluo-yellow);
+            font-weight: 700;
+        }
+
+        /* Warning alert for Google Review importance */
+        .alert-box {
+            background-color: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-left: 4px solid #d97706;
+            color: #78350f;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            margin-bottom: 22px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .alert-box strong {
+            color: #451a03;
+        }
+
+        .badge-required-google {
+            background-color: #fffbeb;
+            border: 1px solid #fcd34d;
+            color: #b45309;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            display: inline-block;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        /* Lead Form Container */
+        .form-card {
+            background-color: #ffffff;
+            color: var(--text-main);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            text-align: left;
+            margin-top: -20px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            background-color: #f8fafc;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-green);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+        }
+
+        .input-helper {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Submit Button with pulse animation */
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent-green);
+            color: #ffffff;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 16px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(45, 106, 79, 0.2);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-button 2.5s infinite;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(45, 106, 79, 0.3);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        @keyframes pulse-button {
+            0% {
+                box-shadow: 0 10px 20px rgba(45, 106, 79, 0.2);
+            }
+            50% {
+                box-shadow: 0 10px 25px rgba(45, 106, 79, 0.45), 0 0 0 8px rgba(45, 106, 79, 0.15);
+            }
+            100% {
+                box-shadow: 0 10px 20px rgba(45, 106, 79, 0.2);
+            }
+        }
+
+        .form-disclaimer {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 14px;
+            line-height: 1.4;
+        }
+
+        /* Advantage Section */
+        .advantage-section {
+            padding: 48px 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .advantage-card {
+            background: linear-gradient(135deg, #e6f4ea 0%, #d1e7dd 100%);
+            border: 1px solid #a3cfbb;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .advantage-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 8px;
+        }
+
+        .advantage-card p {
+            font-size: 0.95rem;
+            color: #1e4620;
+            line-height: 1.5;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 40px 0;
+            background-color: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .feature-item {
+            background-color: var(--bg-secondary);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .feature-item-icon {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--deep-green);
+            color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p {
+            color: #88a496;
+            margin-bottom: 8px;
+        }
+
+        .footer-logo {
+            height: 36px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .form-card {
+                padding: 20px 16px;
+                border-radius: var(--radius-md);
+            }
+            .hero-contest {
+                padding: 30px 0 50px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-wrap">
+            <a href="/" class="logo-link" style="display: inline-block; vertical-align: middle;">
+                <span style="font-family: var(--font-main); font-size: 1.4rem; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">La Laverie <span style="color: var(--fluo-yellow);">Lens</span></span>
+            </a>
+            <a href="/" class="btn-back-site">← Retour au site</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with Contest details -->
+        <section class="hero-contest">
+            <div class="container hero-content">
+                <div class="badge-contest">Jeu Concours 🎁</div>
+                
+                <h1 id="main-title">
+                    Tentez de gagner
+                    <span>un lavage XXL - 20kg !</span>
+                </h1>
+                
+                <p class="question-hook" id="sub-title">Votre prochain lavage offert ?</p>
+                
+                <div class="instructions">
+                    <div class="instruction-step">
+                        <span class="step-num">1</span>
+                        <p>📋 <strong>Remplissez</strong> le court formulaire ci-dessous avec vos coordonnées de participation.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-num">2</span>
+                        <p>🚀 <strong>Cliquez</strong> sur le bouton d'action pour être automatiquement redirigé(e) vers notre page Google Avis.</p>
+                    </div>
+                    <div class="instruction-step">
+                        <span class="step-num">3</span>
+                        <p>🎁 <strong>Publiez</strong> votre avis. Votre inscription au tirage au sort pour le lavage XXL est instantanément validée !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Card Section -->
+        <section style="background-color: var(--bg-secondary); padding-bottom: 40px;">
+            <div class="container">
+                <div class="form-card">
+                    <h2 id="form-heading">📋 Vos coordonnées de participation</h2>
+
+                    <div class="alert-box">
+                        ⚠️ <strong>CONDITION OBLIGATOIRE :</strong> Votre participation ne sera validée qu'après la <strong>publication réelle</strong> de votre avis sur Google. Le pseudo saisi ci-dessous doit correspondre à celui de votre compte Google pour que nous puissions valider votre gain !
+                    </div>
+                    
+                    <form id="contest-form" action="https://formsubmit.co/lavasicca@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="Nouveau Participant Jeu Concours - La Laverie Lens" />
+                        <input type="hidden" name="_captcha" value="false" />
+                        <!-- Redirect link provided by the user -->
+                        <input type="hidden" name="_next" value="https://g.page/r/CWt7WxJ0j9LXEBM/review" />
+                        
+                        <div class="form-group">
+                            <label for="first-name">Prénom *</label>
+                            <input type="text" id="first-name" name="Prénom" class="form-input" placeholder="Ex: Thomas" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last-name">Nom *</label>
+                            <input type="text" id="last-name" name="Nom" class="form-input" placeholder="Ex: Martin" required />
+                        </div>
+                        
+                        <div class="form-group" style="background: rgba(217, 119, 6, 0.03); padding: 12px; border-radius: var(--radius-md); border: 1px dashed rgba(217, 119, 6, 0.2);">
+                            <label for="google-username" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                <span style="font-weight: 700; color: #78350f;">Pseudo Google *</span>
+                                <span class="badge-required-google">Indispensable pour valider</span>
+                            </label>
+                            <input type="text" id="google-username" name="Pseudo_Google" class="form-input" placeholder="Ex: Thomas M." required style="border-color: #fcd34d;" />
+                            <span class="input-helper" style="color: #92400e; margin-top: 6px;">⚠️ Saisissez <strong>exactement</strong> le nom avec lequel vous allez publier votre avis sur Google Maps.</span>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" class="btn-submit">
+                            Valider & Rédiger mon avis Google 🚀
+                        </button>
+                    </form>
+                    
+                    <p class="form-disclaimer">
+                        🔒 Vos informations restent strictement confidentielles et ne seront utilisées que dans le cadre du tirage au sort de ce jeu concours.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Major Advantage Section -->
+        <section class="advantage-section">
+            <div class="container">
+                <div class="advantage-card">
+                    <span class="advantage-icon" role="img" aria-label="Cadeau lessive">🎁</span>
+                    <h3>Lessive pro & adoucissant OFFERTS</h3>
+                    <p>Plus besoin d'apporter votre bidon ! Notre lessive professionnelle hygiénisante et l'adoucissant de qualité sont injectés automatiquement dans toutes les machines à chaque cycle.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reassuring details Grid -->
+        <section class="features-section">
+            <div class="container">
+                <h3 style="font-size: 1.1rem; text-align: center; margin-bottom: 20px; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.5px;">Pourquoi choisir La Laverie Lens ?</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🧺</div>
+                        <h4>Machines XXL 20kg</h4>
+                        <p>Tambours de grande capacité idéaux pour vos couettes et gros volumes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">⚡</div>
+                        <h4>Séchage Rapide</h4>
+                        <p>Séchoirs haute performance pour un linge prêt en un clin d'œil.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">💳</div>
+                        <h4>Paiement Facile</h4>
+                        <p>CB, sans contact, pièces, billets et application mobile.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-item-icon">🛡️</div>
+                        <h4>Sécurisé 7j/7</h4>
+                        <p>Ouvert de 6h à 21h sous vidéosurveillance pour votre sécurité.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h4 style="font-family: var(--font-main); font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 16px; letter-spacing: -0.5px;">La Laverie <span style="color: var(--fluo-yellow);">Lens</span></h4>
+            <p>&copy; <span id="year">2026</span> La Laverie Lens. Tous droits réservés.</p>
+            <p style="font-size: 0.7rem; opacity: 0.7;">Ce jeu concours n'est pas associé à, ou sponsorisé par Google LLC. Règlement disponible sur demande à la laverie.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ==========================================
+        // CONFIGURATION GOOGLE SHEETS
+        // ==========================================
+        // Collez l'URL de votre application web Google Apps Script ci-dessous :
+        // Exemple : const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycb.../exec";
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbynzJsgSGU3zqVcnH-G0e1KUmxOmi5fH7p6Y8OYREWZG4HsOOyeBYqJdF87AX9m1IM8/exec"; 
+
+        // 1. Secret Admin View
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('admin') || urlParams.has('show-leads')) {
+            // Hide the main elements
+            document.querySelector('header').style.display = 'none';
+            document.querySelector('main').innerHTML = `
+                <div class="container" style="padding: 40px 20px; max-width: 800px;">
+                    <div style="background: white; padding: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); border: 1px solid #e2e8f0;">
+                        <h2 style="color: var(--accent-green); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 1.5rem;">
+                            <span>📊 Participations Enregistrées (Base centrale)</span>
+                            <a href="/jeu-concours" style="font-size: 0.85rem; padding: 6px 12px; background: var(--bg-secondary); border-radius: 20px; color: var(--text-light); font-weight: 500;">Retour</a>
+                        </h2>
+                        
+                        <div id="setup-warning" style="display: none; background: #fffbeb; border: 1px solid #fef3c7; border-left: 4px solid #d97706; padding: 14px; border-radius: var(--radius-md); margin-bottom: 22px; font-size: 0.85rem; color: #78350f; line-height: 1.45;">
+                            ⚠️ <strong>Mode déconnecté (Local)</strong> : Les participations s'affichent uniquement pour cet appareil. Pour centraliser tous les participants de tous les téléphones, veuillez configurer votre <strong>Google Sheet</strong> en renseignant l'URL dans la variable <code>GOOGLE_SHEET_URL</code> du fichier <code>jeu-concours.html</code>.
+                        </div>
+                        
+                        <div id="leads-table-container" style="overflow-x: auto; margin-bottom: 20px;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid #e2e8f0; color: var(--text-light);">
+                                        <th style="padding: 10px;">Date</th>
+                                        <th style="padding: 10px;">Prénom</th>
+                                        <th style="padding: 10px;">Nom</th>
+                                        <th style="padding: 10px;">Pseudo Google</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leads-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 20px;">
+                            <div style="display: flex; gap: 10px;">
+                                <button id="btn-export" style="padding: 10px 20px; background: var(--accent-green); color: white; border: none; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 0.85rem;">Exporter en CSV</button>
+                                <button id="btn-clear" style="padding: 10px 20px; background: #e53e3e; color: white; border: none; border-radius: 30px; font-weight: 600; cursor: pointer; font-size: 0.85rem; display: none;">Effacer la liste locale</button>
+                            </div>
+                            <span id="leads-count" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-green);">0 participant(s)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const leads = JSON.parse(localStorage.getItem('laverie_lens_contest_leads') || '[]');
+            const tableBody = document.getElementById('leads-table-body');
+            const countLabel = document.getElementById('leads-count');
+            
+            function renderRows(dataList) {
+                tableBody.innerHTML = '';
+                countLabel.textContent = `${dataList.length} participant(s)`;
+                
+                if (dataList.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="4" style="padding: 20px; text-align: center; color: var(--text-light);">Aucun participant enregistré pour le moment.</td></tr>`;
+                    return;
+                }
+                
+                dataList.forEach(lead => {
+                    const row = document.createElement('tr');
+                    row.style.borderBottom = '1px solid #edf2f7';
+                    const dateFormatted = new Date(lead.date).toLocaleString('fr-FR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    row.innerHTML = `
+                        <td style="padding: 10px; color: var(--text-light);">${dateFormatted}</td>
+                        <td style="padding: 10px; font-weight: 600;">${escapeHTML(lead.firstName)}</td>
+                        <td style="padding: 10px; font-weight: 600;">${escapeHTML(lead.lastName)}</td>
+                        <td style="padding: 10px; color: #b45309; font-weight: 600;">${escapeHTML(lead.googleUsername)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+            
+            let displayList = leads;
+            
+            if (!GOOGLE_SHEET_URL) {
+                // Show local warning and local leads
+                document.getElementById('setup-warning').style.display = 'block';
+                document.getElementById('btn-clear').style.display = 'inline-block';
+                renderRows(leads);
+            } else {
+                // Load online leads from Google Sheets
+                tableBody.innerHTML = `<tr><td colspan="4" style="padding: 20px; text-align: center; color: var(--text-light);">Chargement des participations depuis Google Sheets... ⏳</td></tr>`;
+                
+                fetch(GOOGLE_SHEET_URL)
+                .then(res => res.json())
+                .then(onlineLeads => {
+                    displayList = onlineLeads;
+                    // Sort by date descending
+                    displayList.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    renderRows(displayList);
+                })
+                .catch(err => {
+                    console.error("Google Sheets fetch error, showing local backup:", err);
+                    tableBody.innerHTML = `<tr><td colspan="4" style="padding: 10px; text-align: center; color: #e53e3e; background: #fff5f5; font-size: 0.85rem;">⚠️ Impossible de se connecter à Google Sheets (Vérifiez le déploiement). Affichage de la sauvegarde locale ci-dessous :</td></tr>`;
+                    // Render local backup rows after message
+                    const backupContainer = document.createElement('tbody');
+                    renderRows(leads);
+                });
+            }
+            
+            // Export to CSV
+            document.getElementById('btn-export').addEventListener('click', function() {
+                if (displayList.length === 0) return alert("Aucune donnée à exporter.");
+                let csvContent = "\uFEFFDate,Prenom,Nom,Pseudo Google\n"; // Added BOM for Excel UTF-8 support
+                displayList.forEach(lead => {
+                    const dateFormatted = new Date(lead.date).toLocaleString('fr-FR');
+                    csvContent += `"${dateFormatted}","${lead.firstName.replace(/"/g, '""')}","${lead.lastName.replace(/"/g, '""')}","${lead.googleUsername.replace(/"/g, '""')}"\n`;
+                });
+                
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement("a");
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", `participations_laverie_lens_${new Date().toISOString().slice(0,10)}.csv`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+            
+            // Clear local leads
+            document.getElementById('btn-clear').addEventListener('click', function() {
+                if (confirm("Effacer définitivement toutes les participations locales enregistrées sur cet appareil ?")) {
+                    localStorage.removeItem('laverie_lens_contest_leads');
+                    window.location.reload();
+                }
+            });
+        }
+        
+        function escapeHTML(str) {
+            return str ? str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            ) : '';
+        }
+
+        // 2. Form Submission Handler with outage resilience
+        const form = document.getElementById('contest-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('submit-btn');
+                
+                // Disable button and show progress
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+                submitBtn.innerHTML = "Enregistrement en cours... ⚡";
+                
+                // Prepare form data for FormSubmit email fallback
+                const formData = new FormData(form);
+                
+                // Backup lead data in browser storage
+                const lead = {
+                    firstName: document.getElementById('first-name').value,
+                    lastName: document.getElementById('last-name').value,
+                    googleUsername: document.getElementById('google-username').value,
+                    date: new Date().toISOString()
+                };
+                
+                try {
+                    const existingLeads = JSON.parse(localStorage.getItem('laverie_lens_contest_leads') || '[]');
+                    existingLeads.push(lead);
+                    localStorage.setItem('laverie_lens_contest_leads', JSON.stringify(existingLeads));
+                } catch (err) {
+                    console.error("Local storage backup failed:", err);
+                }
+                
+                // Target redirect link (Google reviews URL)
+                const redirectUrl = "https://g.page/r/CWt7WxJ0j9LXEBM/review";
+                
+                // Track redirect execution to ensure it only runs once
+                let redirected = false;
+                function doRedirect() {
+                    if (!redirected) {
+                        redirected = true;
+                        window.location.href = redirectUrl;
+                    }
+                }
+                
+                // Fallback timeout redirect after 1800ms
+                // If FormSubmit or Google Sheet is down or connection is too slow, we redirect anyway!
+                const fallbackTimeout = setTimeout(doRedirect, 1800);
+                
+                // List of promises to execute
+                const apiPromises = [];
+                
+                // A. Save to Google Sheets if configured
+                if (GOOGLE_SHEET_URL) {
+                    apiPromises.push(
+                        fetch(GOOGLE_SHEET_URL, {
+                            method: "POST",
+                            mode: "no-cors", // Required to bypass CORS preflight checks on Apps Script web apps
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(lead)
+                        })
+                        .catch(err => console.error("Google Sheets save error:", err))
+                    );
+                }
+                
+                // B. Send email via AJAX to FormSubmit
+                apiPromises.push(
+                    fetch("https://formsubmit.co/ajax/lavasicca@gmail.com", {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .catch(err => console.warn("FormSubmit server down:", err))
+                );
+                
+                // Execute saving & mailing simultaneously
+                Promise.all(apiPromises)
+                .then(() => {
+                    clearTimeout(fallbackTimeout);
+                    doRedirect();
+                })
+                .catch(() => {
+                    clearTimeout(fallbackTimeout);
+                    doRedirect();
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
