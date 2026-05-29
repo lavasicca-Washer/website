@@ -560,6 +560,11 @@
                             <input type="text" id="last-name" name="Nom" class="form-input" placeholder="Ex: Martin" required />
                         </div>
                         
+                        <div class="form-group">
+                            <label for="email">Adresse E-mail *</label>
+                            <input type="email" id="email" name="Email" class="form-input" placeholder="Ex: thomas.martin@gmail.com" required />
+                        </div>
+                        
                         <div class="form-group" style="background: rgba(217, 119, 6, 0.03); padding: 12px; border-radius: var(--radius-md); border: 1px dashed rgba(217, 119, 6, 0.2);">
                             <label for="google-username" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                                 <span style="font-weight: 700; color: #78350f;">Pseudo Google *</span>
@@ -709,6 +714,7 @@
                                         <th style="padding: 10px;">Date</th>
                                         <th style="padding: 10px;">Prénom</th>
                                         <th style="padding: 10px;">Nom</th>
+                                        <th style="padding: 10px;">Email</th>
                                         <th style="padding: 10px;">Pseudo Google</th>
                                     </tr>
                                 </thead>
@@ -755,6 +761,7 @@
                         <td style="padding: 10px; color: var(--text-light);">${dateFormatted}</td>
                         <td style="padding: 10px; font-weight: 600;">${escapeHTML(lead.firstName)}</td>
                         <td style="padding: 10px; font-weight: 600;">${escapeHTML(lead.lastName)}</td>
+                        <td style="padding: 10px; color: var(--text-light);">${escapeHTML(lead.email || '-')}</td>
                         <td style="padding: 10px; color: #b45309; font-weight: 600;">${escapeHTML(lead.googleUsername)}</td>
                     `;
                     tableBody.appendChild(row);
@@ -790,10 +797,10 @@
             // Export to CSV
             document.getElementById('btn-export').addEventListener('click', function() {
                 if (displayList.length === 0) return alert("Aucune donnée à exporter.");
-                let csvContent = "\uFEFFDate,Prenom,Nom,Pseudo Google\n"; // Added BOM for Excel UTF-8 support
+                let csvContent = "\uFEFFDate,Prenom,Nom,Email,Pseudo Google\n"; // Added BOM for Excel UTF-8 support
                 displayList.forEach(lead => {
                     const dateFormatted = new Date(lead.date).toLocaleString('fr-FR');
-                    csvContent += `"${dateFormatted}","${lead.firstName.replace(/"/g, '""')}","${lead.lastName.replace(/"/g, '""')}","${lead.googleUsername.replace(/"/g, '""')}"\n`;
+                    csvContent += `"${dateFormatted}","${lead.firstName.replace(/"/g, '""')}","${lead.lastName.replace(/"/g, '""')}","${(lead.email || '').replace(/"/g, '""')}","${lead.googleUsername.replace(/"/g, '""')}"\n`;
                 });
                 
                 const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -841,6 +848,7 @@
                 const lead = {
                     firstName: document.getElementById('first-name').value,
                     lastName: document.getElementById('last-name').value,
+                    email: document.getElementById('email').value,
                     googleUsername: document.getElementById('google-username').value,
                     date: new Date().toISOString()
                 };
