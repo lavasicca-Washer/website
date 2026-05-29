@@ -645,6 +645,51 @@
         if (urlParams.has('admin') || urlParams.has('show-leads')) {
             // Hide the main elements
             document.querySelector('header').style.display = 'none';
+            
+            // Check session authentication
+            if (sessionStorage.getItem('laverie_admin_authenticated') === 'true') {
+                showAdminDashboard();
+            } else {
+                showAdminLogin();
+            }
+        }
+
+        function showAdminLogin() {
+            document.querySelector('main').innerHTML = `
+                <div class="container" style="padding: 80px 20px; max-width: 400px; text-align: center;">
+                    <div style="background: white; padding: 32px; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); border: 1px solid #e2e8f0;">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">🔒</div>
+                        <h2 style="color: var(--deep-green); font-family: var(--font-main); font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Accès Réservé</h2>
+                        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 24px;">Veuillez saisir le mot de passe pour accéder à la liste des participants.</p>
+                        
+                        <form id="admin-auth-form">
+                            <div style="margin-bottom: 18px; text-align: left;">
+                                <input type="password" id="admin-password" class="form-input" placeholder="Mot de passe" required style="text-align: center; font-size: 1.1rem; padding: 12px;" />
+                                <span id="auth-error" style="color: #e53e3e; font-size: 0.85rem; margin-top: 8px; display: none; text-align: center; font-weight: 600; width: 100%;">⚠️ Mot de passe incorrect</span>
+                            </div>
+                            <button type="submit" class="btn-submit" style="padding: 12px; font-size: 1rem;">
+                                Valider 🔑
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('admin-auth-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const enteredPassword = document.getElementById('admin-password').value;
+                if (enteredPassword === 'Lamarck2024!') {
+                    sessionStorage.setItem('laverie_admin_authenticated', 'true');
+                    showAdminDashboard();
+                } else {
+                    document.getElementById('auth-error').style.display = 'block';
+                    document.getElementById('admin-password').value = '';
+                    document.getElementById('admin-password').focus();
+                }
+            });
+        }
+
+        function showAdminDashboard() {
             document.querySelector('main').innerHTML = `
                 <div class="container" style="padding: 40px 20px; max-width: 800px;">
                     <div style="background: white; padding: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); border: 1px solid #e2e8f0;">
@@ -738,8 +783,6 @@
                 .catch(err => {
                     console.error("Google Sheets fetch error, showing local backup:", err);
                     tableBody.innerHTML = `<tr><td colspan="4" style="padding: 10px; text-align: center; color: #e53e3e; background: #fff5f5; font-size: 0.85rem;">⚠️ Impossible de se connecter à Google Sheets (Vérifiez le déploiement). Affichage de la sauvegarde locale ci-dessous :</td></tr>`;
-                    // Render local backup rows after message
-                    const backupContainer = document.createElement('tbody');
                     renderRows(leads);
                 });
             }
