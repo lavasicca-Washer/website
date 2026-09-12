@@ -131,9 +131,7 @@
                     <a href="/laverie-professionnels-lens"
                         style="color:white; font-size: 0.9rem; font-weight: 700;">Espace Pro</a>
                     <a href="/blog" style="color:white; font-size: 0.9rem; font-weight: 500;">Blog</a>
-                    <a href="/shop"
-                        style="display:inline-flex; align-items:center; gap:5px; background:#ffeb3b; color:#1a1a1a; font-size: 0.85rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; text-decoration:none; animation: shopPulse 2s infinite;"><span>🛒</span>
-                        Shop</a>
+
                 </nav>
                 <a href="https://gad.touchnpay.fr/fr/public/material/406jkj1mieeqrm3" target="_blank"
                     class="btn-live-soft">
@@ -610,7 +608,7 @@
                             <li><a href="/lavage-couette-lens">Lavage Couettes</a></li>
                             <li><a href="/sechage-rapide-lens">Séchage Rapide</a></li>
                             <li><a href="/laverie-professionnels-lens"
-                                    style="color:white; font-size: 0.9rem; font-weight: 700;">Espace Pro</a></hi>
+                                    style="color:white; font-size: 0.9rem; font-weight: 700;">Espace Pro</a>
                             <li><a href="/tarifs">Nos Tarifs</a></li>
                         </ul>
                     </div>
@@ -664,7 +662,7 @@
 
             <a href="/services.html" class="mobile-nav-item"><span
                     class="mobile-nav-icon">🧺</span><span>Services</span></a>
-            <a href="/shop.html" class="mobile-nav-item shop-btn"><span class="mobile-nav-icon">🛒</span></a>
+            <a href="/contact.html" class="mobile-nav-item"><span class="mobile-nav-icon">📍</span><span>Contact</span></a>
         </div>
     </nav>
 
@@ -702,6 +700,334 @@
 
     <script type="module" crossorigin src="/assets/modulepreload-polyfill-b5qt9emx.js"></script>
     <script type="module" crossorigin src="/assets/main-boeoqlyb.js"></script>
+
+    <!-- ==========================================
+         POP-UP OFFRE SPÉCIALE (3 MODÈLES DYNAMIQUES)
+         ========================================== -->
+    <style>
+        .promo-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(6px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .promo-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .promo-modal-card {
+            position: relative;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 22px;
+            transform: scale(0.88) translateY(15px);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .promo-modal-overlay.active .promo-modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .promo-close-btn {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 36px;
+            height: 36px;
+            background: #ffffff;
+            color: #111;
+            border-radius: 50%;
+            border: 2px solid #e2e8f0;
+            font-size: 1.4rem;
+            line-height: 1;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+            z-index: 100001;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .promo-close-btn:hover {
+            transform: scale(1.12);
+            background: #f1f5f9;
+        }
+
+        /* MODÈLE 1 */
+        .pm-1 {
+            background: radial-gradient(circle at 50% 30%, #203a43 0%, #0f2027 100%);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+            border-radius: 22px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+        }
+        .pm-1-badge {
+            background: linear-gradient(135deg, #e63946, #d62828);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.5);
+            letter-spacing: 1px;
+            animation: pulse-badge 2s infinite;
+        }
+        .pm-1-price-circle {
+            background: #ffdd00;
+            color: #0d1b2a;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px #e63946, 0 10px 25px rgba(0,0,0,0.5);
+            margin: 14px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-3deg);
+        }
+        .pm-1-bonus {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px dashed rgba(255, 221, 0, 0.6);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin: 12px 0 16px;
+        }
+        .pm-1-cta {
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
+            color: white;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
+        }
+
+        /* MODÈLE 2 */
+        .pm-2 {
+            background: linear-gradient(160deg, #0f251c 0%, #1b4332 50%, #08140f 100%);
+            color: white;
+            padding: 28px 22px;
+            text-align: center;
+            border-radius: 22px;
+            border: 1px solid rgba(204, 255, 0, 0.3);
+            box-shadow: 0 25px 60px rgba(15, 37, 28, 0.6);
+        }
+        .pm-2-tag {
+            background: rgba(204, 255, 0, 0.15);
+            color: #ccff00;
+            border: 1px solid #ccff00;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .pm-2-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .pm-2-cta {
+            background: #ccff00;
+            color: #0f251c;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 4px 20px rgba(204, 255, 0, 0.35);
+        }
+
+        /* MODÈLE 3 */
+        .pm-3 {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 26px 20px;
+            text-align: center;
+            border-radius: 22px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            border: 2px solid #e2e8f0;
+        }
+        .pm-3-tag {
+            background: #fef08a;
+            color: #854d0e;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .pm-3-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 14px 0;
+        }
+        .pm-3-box {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 8px;
+        }
+        .pm-3-cta {
+            background: #2d6a4f;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+        }
+    </style>
+
+    <div id="promoPopupOverlay" class="promo-modal-overlay" onclick="handlePromoBackdrop(event)">
+        <div class="promo-modal-card">
+            <button class="promo-close-btn" onclick="closePromoModal()" aria-label="Fermer l'offre spéciale">×</button>
+            <div id="promoModalSlot"></div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const PROMO_STORAGE_KEY = 'active_promo_popup_model';
+            const POPUP_SEEN_KEY = 'promo_offer_popup_seen';
+
+            const TEMPLATES = {
+                1: `<div class="pm-1">
+                        <div>
+                            <div class="pm-1-badge">🔥 OFFRE SPÉCIALE 2026</div>
+                            <h2 style="font-family:'Outfit',sans-serif; font-size:1.6rem; font-weight:900; margin:12px 0 4px; text-transform:uppercase;">Machines 14 kg & 20 kg</h2>
+                            <div style="font-size:0.9rem; font-weight:700; color:#64dfdf; text-transform:uppercase;">Couettes & Gros Volumes</div>
+                        </div>
+                        <div class="pm-1-price-circle">
+                            <div style="font-family:'Outfit',sans-serif; font-size:3.4rem; font-weight:900; line-height:0.9;">9€</div>
+                            <div style="font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-top:2px;">Le Lavage</div>
+                        </div>
+                        <div>
+                            <div class="pm-1-bonus">
+                                <div style="font-size:0.95rem; font-weight:800; color:#ffdd00;">🧼 LESSIVE GRATUITE</div>
+                                <div style="font-size:0.78rem; color:#e0e1dd; margin-top:2px;">+ Adoucissant professionnel injecté auto</div>
+                            </div>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="pm-1-cta">
+                                📍 J'en profite (310 Rte de Lille)
+                            </a>
+                        </div>
+                    </div>`,
+                2: `<div class="pm-2">
+                        <div>
+                            <div class="pm-2-tag">⚡ OFFRE LIMITÉE 2026</div>
+                            <h2 style="font-family:'Outfit',sans-serif; font-size:1.55rem; font-weight:800; margin:10px 0 4px;">Lavez vos Couettes à <span style="color:#ccff00;">9€</span></h2>
+                            <div style="font-size:0.95rem; color:#b7e4c7; font-weight:600;">Capacités Maxi 14kg & 20kg</div>
+                        </div>
+                        <div class="pm-2-card">
+                            <div style="text-align:left;">
+                                <div style="font-size:0.75rem; text-transform:uppercase; color:#95d5b2; font-weight:700;">Tarif Spécial</div>
+                                <div style="font-family:'Outfit',sans-serif; font-size:2.8rem; font-weight:900; color:#ccff00; line-height:1;">9€</div>
+                            </div>
+                            <div style="width:1px; height:55px; background:rgba(255,255,255,0.15);"></div>
+                            <div style="text-align:left; font-size:0.82rem; color:#e9ecef; display:flex; flex-direction:column; gap:5px;">
+                                <div>🌿 <strong>Lessive & Soin inclus</strong></div>
+                                <div>⏱️ <strong>Lavage express 30min</strong></div>
+                                <div>🚗 <strong>Parking facile 7j/7</strong></div>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="pm-2-cta">
+                                🚀 Obtenir l'itinéraire GPS
+                            </a>
+                        </div>
+                    </div>`,
+                3: `<div class="pm-3">
+                        <div>
+                            <div class="pm-3-tag">🎉 Bon Plan 2026</div>
+                            <h2 style="font-family:'Outfit',sans-serif; font-size:1.45rem; font-weight:800; color:#0f172a; margin-top:6px;">Offre Spéciale Grandes Machines</h2>
+                        </div>
+                        <div class="pm-3-grid">
+                            <div class="pm-3-box">
+                                <div style="font-size:0.85rem; font-weight:700; color:#475569;">Machine 14 KG</div>
+                                <div style="font-family:'Outfit',sans-serif; font-size:1.9rem; font-weight:900; color:#166534; line-height:1.1; margin:4px 0;">9€</div>
+                                <div style="font-size:0.7rem; color:#64748b;">Couette 1-2 pers.</div>
+                            </div>
+                            <div class="pm-3-box" style="background:#f0fdf4; border-color:#22c55e;">
+                                <div style="font-size:0.85rem; font-weight:700; color:#475569;">Machine 20 KG</div>
+                                <div style="font-family:'Outfit',sans-serif; font-size:1.9rem; font-weight:900; color:#166534; line-height:1.1; margin:4px 0;">9€</div>
+                                <div style="font-size:0.7rem; color:#64748b;">King Size & Familial</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; border-radius:10px; padding:9px 12px; font-size:0.82rem; font-weight:700; margin-bottom:15px;">
+                                <span>🎁</span> Lessive pro & Adoucissant OFFERTS
+                            </div>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="pm-3-cta">
+                                🧺 Venir laver mon linge
+                            </a>
+                        </div>
+                    </div>`
+            };
+
+            window.openPromoModal = function() {
+                const modelNum = localStorage.getItem(PROMO_STORAGE_KEY) || '1';
+                const slot = document.getElementById('promoModalSlot');
+                if (slot) slot.innerHTML = TEMPLATES[modelNum] || TEMPLATES[1];
+                const overlay = document.getElementById('promoPopupOverlay');
+                if (overlay) overlay.classList.add('active');
+            };
+
+            window.closePromoModal = function() {
+                const overlay = document.getElementById('promoPopupOverlay');
+                if (overlay) overlay.classList.remove('active');
+                sessionStorage.setItem(POPUP_SEEN_KEY, 'true');
+            };
+
+            window.handlePromoBackdrop = function(e) {
+                if (e.target.id === 'promoPopupOverlay') {
+                    window.closePromoModal();
+                }
+            };
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') window.closePromoModal();
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                if (!sessionStorage.getItem(POPUP_SEEN_KEY)) {
+                    setTimeout(function() {
+                        window.openPromoModal();
+                    }, 1200); // 1.2s delay for pleasant page load
+                }
+            });
+        })();
+    </script>
+
 </body>
 
 </html>

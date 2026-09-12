@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Modèles de Pop-up Offre Spéciale | La Laverie Lens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d6a4f;
+            --primary-dark: #1b4332;
+            --dark-bg: #0b1d16;
+            --accent-yellow: #ffdd00;
+            --accent-lime: #ccff00;
+            --accent-orange: #ff5722;
+            --text-dark: #1e293b;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f0f4f2;
+            color: var(--text-dark);
+            padding: 30px 20px 80px;
+            line-height: 1.5;
+        }
+
+        .header-showcase {
+            max-width: 1100px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8f5e9;
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(45, 106, 79, 0.2);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #556960;
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .btn-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-top:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .grid-variants {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .variant-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .variant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        .variant-card.active-model {
+            border-color: #2d6a4f;
+            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.25), 0 20px 45px rgba(45, 106, 79, 0.15);
+        }
+
+        .variant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .variant-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #111;
+        }
+
+        .active-pill {
+            display: none;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .variant-card.active-model .active-pill {
+            display: inline-block;
+        }
+
+        .variant-preview-frame {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #111;
+            margin-bottom: 20px;
+            position: relative;
+            min-height: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .variant-actions {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-select-model {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn-select-model:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-test-modal {
+            width: 100%;
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 11px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-test-modal:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        /* ==========================================================================
+           STYLE MODÈLE 1 : FLASH FLYER IMPACT (Inspiré de la photo)
+           ========================================================================== */
+        .popup-model-1 {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, #203a43 0%, #0f2027 100%);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .popup-model-1::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 221, 0, 0.15) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .p1-header-badge {
+            background: linear-gradient(135deg, #e63946, #d62828);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.5);
+            letter-spacing: 1px;
+            border: 2px solid rgba(255,255,255,0.4);
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .p1-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 12px 0 6px;
+            line-height: 1.15;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .p1-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #64dfdf;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .p1-price-container {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .p1-price-circle {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffdd00;
+            color: #0d1b2a;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px #e63946, 0 10px 25px rgba(0,0,0,0.5);
+            margin: 0 auto;
+            transform: rotate(-3deg);
+            position: relative;
+        }
+
+        .p1-price-amount {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .p1-price-unit {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .p1-bonus-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px dashed rgba(255, 221, 0, 0.6);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin: 8px 0 16px;
+        }
+
+        .p1-bonus-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #ffdd00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .p1-bonus-sub {
+            font-size: 0.78rem;
+            color: #e0e1dd;
+            margin-top: 2px;
+        }
+
+        .p1-btn-cta {
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
+            color: white;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .p1-btn-cta:hover {
+            transform: scale(1.03);
+            background: linear-gradient(135deg, #0096c7, #03045e);
+        }
+
+        /* ==========================================================================
+           STYLE MODÈLE 2 : LUXE ÉMERAUDE & NÉON (Charte La Laverie Lens)
+           ========================================================================== */
+        .popup-model-2 {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, #0f251c 0%, #1b4332 50%, #08140f 100%);
+            color: white;
+            padding: 28px 22px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(204, 255, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(15, 37, 28, 0.5);
+        }
+
+        .p2-glow {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 150px;
+            height: 150px;
+            background: #ccff00;
+            filter: blur(70px);
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        .p2-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(204, 255, 0, 0.15);
+            color: #ccff00;
+            border: 1px solid #ccff00;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.8px;
+            align-self: center;
+        }
+
+        .p2-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 10px 0 4px;
+            color: #ffffff;
+        }
+
+        .p2-title span {
+            color: #ccff00;
+        }
+
+        .p2-spec-caps {
+            font-size: 0.95rem;
+            color: #b7e4c7;
+            font-weight: 600;
+        }
+
+        .p2-offer-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 14px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .p2-price-left {
+            text-align: left;
+        }
+
+        .p2-price-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #95d5b2;
+            font-weight: 700;
+        }
+
+        .p2-price-val {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #ccff00;
+            line-height: 1;
+        }
+
+        .p2-divider {
+            width: 1px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .p2-perks-right {
+            text-align: left;
+            font-size: 0.82rem;
+            color: #e9ecef;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .p2-perk-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .p2-perk-item strong {
+            color: #ffffff;
+        }
+
+        .p2-btn-cta {
+            background: #ccff00;
+            color: #0f251c;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 4px 20px rgba(204, 255, 0, 0.35);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .p2-btn-cta:hover {
+            background: #b8e600;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           STYLE MODÈLE 3 : DUO CARTE ÉPURÉE & MODERNE
+           ========================================================================== */
+        .popup-model-3 {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            color: #1e293b;
+            padding: 26px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+            border-radius: var(--radius-md);
+            border: 2px solid #e2e8f0;
+        }
+
+        .p3-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .p3-tag {
+            background: #fef08a;
+            color: #854d0e;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .p3-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .p3-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 14px 0;
+        }
+
+        .p3-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .p3-card.highlight {
+            background: #f0fdf4;
+            border-color: #22c55e;
+        }
+
+        .p3-card-weight {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        .p3-card-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #166534;
+            line-height: 1.1;
+            margin: 4px 0;
+        }
+
+        .p3-card-sub {
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+
+        .p3-free-detergent {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            border-radius: 10px;
+            padding: 9px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .p3-btn-cta {
+            background: #2d6a4f;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .p3-btn-cta:hover {
+            background: #1b4332;
+        }
+
+        /* ==========================================================================
+           FULLSCREEN MODAL PREVIEW OVERLAY
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            position: relative;
+            max-width: 440px;
+            width: 100%;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 36px;
+            height: 36px;
+            background: white;
+            color: #111;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10001;
+            transition: transform 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-showcase">
+        <div class="badge-tag">✨ Inspiré de votre visuel</div>
+        <h1>Choisissez votre Pop-up Offre Spéciale</h1>
+        <p class="subtitle">Voici 3 propositions graphiques pour votre offre <strong>"Machines 14kg & 20kg à 9€ avec Lessive & Adoucissant Gratuits"</strong>. Cliquez sur <strong>"Activer sur le site"</strong> pour appliquer instantanément le modèle choisi sur <a href="/" style="color: #2d6a4f; font-weight: 700;">lalaverielens.fr</a>.</p>
+        
+        <div class="action-bar">
+            <a href="/" class="btn-top">🏠 Voir le site</a>
+            <a href="/tarifs.html" class="btn-top">💳 Voir les Tarifs</a>
+            <a href="/contact.html" class="btn-top">📍 Contact & Accès</a>
+        </div>
+    </div>
+
+    <div class="grid-variants">
+
+        <!-- ==================== VARIANTE 1 ==================== -->
+        <div class="variant-card" id="card-model-1">
+            <div class="variant-header">
+                <span class="variant-title">Modèle 1 : Flyer Flash Impact</span>
+                <span class="active-pill">Actif sur le site</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Fidèle à votre photo originale : badge jaune percutant, bandeau rouge promotionnel et contraste ultra-lisible.</p>
+
+            <div class="variant-preview-frame">
+                <!-- HTML Contenu Variante 1 -->
+                <div class="popup-model-1">
+                    <div>
+                        <div class="p1-header-badge">🔥 OFFRE SPÉCIALE 2026</div>
+                        <h2 class="p1-title">Machines 14 kg & 20 kg</h2>
+                        <div class="p1-subtitle">Couettes & Gros Volumes</div>
+                    </div>
+
+                    <div class="p1-price-container">
+                        <div class="p1-price-circle">
+                            <div class="p1-price-amount">9€</div>
+                            <div class="p1-price-unit">Le Lavage</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="p1-bonus-box">
+                            <div class="p1-bonus-title">🧼 LESSIVE GRATUITE</div>
+                            <div class="p1-bonus-sub">+ Adoucissant professionnel injecté auto</div>
+                        </div>
+
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="p1-btn-cta">
+                            📍 J'en profite (310 Rte de Lille)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-actions">
+                <button class="btn-select-model" onclick="selectActiveModel(1)">
+                    ⭐ Activer ce modèle sur le site
+                </button>
+                <button class="btn-test-modal" onclick="openModalTest(1)">
+                    👁️ Tester en pop-up plein écran
+                </button>
+            </div>
+        </div>
+
+        <!-- ==================== VARIANTE 2 ==================== -->
+        <div class="variant-card" id="card-model-2">
+            <div class="variant-header">
+                <span class="variant-title">Modèle 2 : Luxe Émeraude & Fluo</span>
+                <span class="active-pill">Actif sur le site</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">100% aligné avec la charte graphique de La Laverie Lens (vert forêt profond, accents jaune néon, effet néon).</p>
+
+            <div class="variant-preview-frame">
+                <!-- HTML Contenu Variante 2 -->
+                <div class="popup-model-2">
+                    <div class="p2-glow"></div>
+                    <div>
+                        <div class="p2-tag">⚡ OFFRE LIMITÉE 2026</div>
+                        <h2 class="p2-title">Lavez vos Couettes à <span>9€</span></h2>
+                        <div class="p2-spec-caps">Capacités Maxi 14kg & 20kg</div>
+                    </div>
+
+                    <div class="p2-offer-card">
+                        <div class="p2-price-left">
+                            <div class="p2-price-label">Tarif Spécial</div>
+                            <div class="p2-price-val">9€</div>
+                        </div>
+                        <div class="p2-divider"></div>
+                        <div class="p2-perks-right">
+                            <div class="p2-perk-item">🌿 <strong>Lessive & Soin inclus</strong></div>
+                            <div class="p2-perk-item">⏱️ <strong>Lavage express 30min</strong></div>
+                            <div class="p2-perk-item">🚗 <strong>Parking facile 7j/7</strong></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="p2-btn-cta">
+                            🚀 Obtenir l'itinéraire GPS
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-actions">
+                <button class="btn-select-model" onclick="selectActiveModel(2)">
+                    ⭐ Activer ce modèle sur le site
+                </button>
+                <button class="btn-test-modal" onclick="openModalTest(2)">
+                    👁️ Tester en pop-up plein écran
+                </button>
+            </div>
+        </div>
+
+        <!-- ==================== VARIANTE 3 ==================== -->
+        <div class="variant-card" id="card-model-3">
+            <div class="variant-header">
+                <span class="variant-title">Modèle 3 : Carte Épurée Moderne</span>
+                <span class="active-pill">Actif sur le site</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Style application moderne clair, avec comparatif des 2 machines (14kg et 20kg) et badge cadeau transparent.</p>
+
+            <div class="variant-preview-frame">
+                <!-- HTML Contenu Variante 3 -->
+                <div class="popup-model-3">
+                    <div class="p3-top">
+                        <div class="p3-tag">🎉 Bon Plan 2026</div>
+                        <h2 class="p3-title">Offre Spéciale Grandes Machines</h2>
+                    </div>
+
+                    <div class="p3-grid">
+                        <div class="p3-card">
+                            <div class="p3-card-weight">Machine 14 KG</div>
+                            <div class="p3-card-price">9€</div>
+                            <div class="p3-card-sub">Couette 1-2 pers.</div>
+                        </div>
+                        <div class="p3-card highlight">
+                            <div class="p3-card-weight">Machine 20 KG</div>
+                            <div class="p3-card-price">9€</div>
+                            <div class="p3-card-sub">King Size & Familial</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="p3-free-detergent">
+                            <span>🎁</span> Lessive pro & Adoucissant OFFERTS
+                        </div>
+
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="p3-btn-cta">
+                            🧺 Venir laver mon linge
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variant-actions">
+                <button class="btn-select-model" onclick="selectActiveModel(3)">
+                    ⭐ Activer ce modèle sur le site
+                </button>
+                <button class="btn-test-modal" onclick="openModalTest(3)">
+                    👁️ Tester en pop-up plein écran
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL OVERLAY TESTER -->
+    <div id="modalOverlay" class="modal-overlay" onclick="handleBackdropClick(event)">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeModalTest()" aria-label="Fermer la pop-up">×</button>
+            <div id="modalSlot"></div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast">
+        <span>✅</span>
+        <span id="toastMsg">Modèle sélectionné avec succès !</span>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'active_promo_popup_model';
+
+        const TEMPLATES = {
+            1: `<div class="popup-model-1" style="min-height: 480px; box-shadow: 0 25px 60px rgba(0,0,0,0.5);">
+                    <div>
+                        <div class="p1-header-badge">🔥 OFFRE SPÉCIALE 2026</div>
+                        <h2 class="p1-title" style="font-size: 1.8rem; margin: 15px 0 8px;">Machines 14 kg & 20 kg</h2>
+                        <div class="p1-subtitle">Couettes & Gros Volumes</div>
+                    </div>
+                    <div class="p1-price-container">
+                        <div class="p1-price-circle" style="width: 135px; height: 135px;">
+                            <div class="p1-price-amount" style="font-size: 3.8rem;">9€</div>
+                            <div class="p1-price-unit">Le Lavage</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="p1-bonus-box" style="padding: 12px 16px;">
+                            <div class="p1-bonus-title" style="font-size: 1.1rem;">🧼 LESSIVE GRATUITE</div>
+                            <div class="p1-bonus-sub" style="font-size: 0.85rem;">+ Adoucissant professionnel injecté auto</div>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="p1-btn-cta" style="padding: 15px 24px; font-size: 1.05rem;">
+                            📍 J'en profite (310 Rte de Lille)
+                        </a>
+                    </div>
+                </div>`,
+            2: `<div class="popup-model-2" style="min-height: 480px; box-shadow: 0 25px 60px rgba(0,0,0,0.5);">
+                    <div class="p2-glow"></div>
+                    <div>
+                        <div class="p2-tag">⚡ OFFRE LIMITÉE 2026</div>
+                        <h2 class="p2-title" style="font-size: 1.8rem; margin: 15px 0 6px;">Lavez vos Couettes à <span>9€</span></h2>
+                        <div class="p2-spec-caps" style="font-size: 1.05rem;">Capacités Maxi 14kg & 20kg</div>
+                    </div>
+                    <div class="p2-offer-card" style="padding: 20px 16px; margin: 20px 0;">
+                        <div class="p2-price-left">
+                            <div class="p2-price-label">Tarif Spécial</div>
+                            <div class="p2-price-val" style="font-size: 3.2rem;">9€</div>
+                        </div>
+                        <div class="p2-divider" style="height: 70px;"></div>
+                        <div class="p2-perks-right" style="font-size: 0.9rem;">
+                            <div class="p2-perk-item">🌿 <strong>Lessive & Soin inclus</strong></div>
+                            <div class="p2-perk-item">⏱️ <strong>Lavage express 30min</strong></div>
+                            <div class="p2-perk-item">🚗 <strong>Parking facile 7j/7</strong></div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="p2-btn-cta" style="padding: 15px 24px; font-size: 1.05rem;">
+                            🚀 Obtenir l'itinéraire GPS
+                        </a>
+                    </div>
+                </div>`,
+            3: `<div class="popup-model-3" style="min-height: 480px; box-shadow: 0 25px 60px rgba(0,0,0,0.4);">
+                    <div class="p3-top">
+                        <div class="p3-tag">🎉 Bon Plan 2026</div>
+                        <h2 class="p3-title" style="font-size: 1.7rem; margin-top: 6px;">Offre Spéciale Grandes Machines</h2>
+                    </div>
+                    <div class="p3-grid" style="margin: 20px 0;">
+                        <div class="p3-card" style="padding: 16px 10px;">
+                            <div class="p3-card-weight">Machine 14 KG</div>
+                            <div class="p3-card-price" style="font-size: 2.2rem;">9€</div>
+                            <div class="p3-card-sub">Couette 1-2 pers.</div>
+                        </div>
+                        <div class="p3-card highlight" style="padding: 16px 10px;">
+                            <div class="p3-card-weight">Machine 20 KG</div>
+                            <div class="p3-card-price" style="font-size: 2.2rem;">9€</div>
+                            <div class="p3-card-sub">King Size & Familial</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="p3-free-detergent" style="padding: 12px 14px; font-size: 0.9rem; margin-bottom: 20px;">
+                            <span>🎁</span> Lessive pro & Adoucissant OFFERTS
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=310+Route+de+Lille+62300+Lens" target="_blank" class="p3-btn-cta" style="padding: 15px 24px; font-size: 1.05rem;">
+                            🧺 Venir laver mon linge
+                        </a>
+                    </div>
+                </div>`
+        };
+
+        function getActiveModel() {
+            return localStorage.getItem(STORAGE_KEY) || '1';
+        }
+
+        function updateCardUI(activeNum) {
+            for (let i = 1; i <= 3; i++) {
+                const card = document.getElementById(`card-model-${i}`);
+                if (card) {
+                    if (i.toString() === activeNum.toString()) {
+                        card.classList.add('active-model');
+                    } else {
+                        card.classList.remove('active-model');
+                    }
+                }
+            }
+        }
+
+        function selectActiveModel(num) {
+            localStorage.setItem(STORAGE_KEY, num.toString());
+            updateCardUI(num);
+            showToast(`Le Modèle ${num} est désormais actif sur le site principal !`);
+        }
+
+        function openModalTest(num) {
+            const slot = document.getElementById('modalSlot');
+            slot.innerHTML = TEMPLATES[num];
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
+        }
+
+        function closeModalTest() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+        }
+
+        function handleBackdropClick(e) {
+            if (e.target.id === 'modalOverlay') {
+                closeModalTest();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModalTest();
+        });
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCardUI(getActiveModel());
+        });
+    </script>
+</body>
+</html>
